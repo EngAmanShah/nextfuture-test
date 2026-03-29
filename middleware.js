@@ -14,7 +14,8 @@ export function middleware(request) {
     pathname.startsWith("/work/") ||
     pathname.includes(".") ||
     pathname === "/robots.txt" ||
-    pathname === "/sitemap.xml"
+    pathname === "/sitemap.xml" ||
+    pathname === "/"
   ) {
     return NextResponse.next();
   }
