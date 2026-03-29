@@ -1,0 +1,227 @@
+/* Flexbox utilities */
+.flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flexStart {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flexItems {
+    display: flex;
+    align-items: center;
+}
+
+/* Display utilities */
+.hiddenLg {
+    display: none;
+}
+
+.visibleLg {
+    display: flex;
+}
+
+.hiddenSm {
+    display: flex;
+}
+
+@media (min-width: 992px) {
+    .hiddenLg {
+        display: flex;
+    }
+
+    .visibleLg {
+        display: flex;
+    }
+
+    .hiddenSm {
+        display: none;
+    }
+}
+
+/* Spacing utilities */
+.px3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.p3 {
+    padding: 1rem;
+}
+
+.mb1 {
+    margin-bottom: 0.25rem;
+}
+
+.mb5 {
+    margin-bottom: 3rem;
+}
+
+.mt5 {
+    margin-top: 3rem;
+}
+
+.ms3 {
+    margin-left: 1rem;
+}
+
+.me3 {
+    margin-right: 1rem;
+}
+
+.me5 {
+    margin-right: 3rem;
+}
+
+.ms5 {
+    margin-left: 3rem;
+}
+
+.m0 {
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .mbXl2 {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .mbXl2 {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Color utilities */
+.bgLight {
+    background-color: #f8f9fa;
+}
+
+.bgDanger {
+    background-color: #dc3545;
+}
+
+.textWhite {
+    color: white;
+}
+
+/* Cursor */
+.cursorPointer {
+    cursor: pointer;
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    border-radius: 50px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+[dir="ltr"] .badgePosition {
+    position: absolute;
+    top: 17px;
+    right: 53px;
+}
+
+[dir="rtl"] .badgePosition {
+    position: absolute;
+    top: 17px;
+    left: 53px;
+}
+
+[dir="rtl"] .menuIcon {
+    transform: rotate(180deg);
+}
+
+.account-nav-item {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 15px 20px 15px 20px;
+    color: rgb(0, 0, 0, 0.65);
+    transition: all 0.3sec ease;
+}
+
+.active-route {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sign-out:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.account-child-container {
+    flex-grow: 1;
+    min-height: calc(100vh - 88px);
+    overflow-y: auto;
+}
+
+@media (min-width: 992px) {
+    [dir="ltr"] .account-child-container {
+        max-width: calc(100% - 270px);
+        margin-left: 270px;
+        margin-right: 0;
+    }
+
+    [dir="rtl"] .account-child-container {
+        max-width: calc(100% - 270px);
+        margin-right: 270px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .account-child-container {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* ensure language switcher flags stay small inside admin header */
+.flag-icon,
+.flag-icon-only {
+    width: 14px !important;
+    height: auto !important;
+}
+
+.flag-only-switcher {
+    width: 28px !important;
+    height: 28px !important;
+    padding: 3px !important;
+}
+
+/* tighten up switcher when used in header */
+.admin-lang-switcher {
+    width: 2px !important;
+    height: 18px !important;
+}
+.admin-lang-switcher .flag-icon,
+.admin-lang-switcher .flag-icon-only {
+    width: 12px !important;
+    height: auto !important;
+}

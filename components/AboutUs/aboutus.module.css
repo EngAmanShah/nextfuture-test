@@ -1,0 +1,402 @@
+/* aboutus.module.css */
+
+.container {
+  font-family: 'Cairo', sans-serif;
+  color: #2D3748;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────
+   Shared helpers
+───────────────────────────────────── */
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1A365D;
+  margin-bottom: 1rem;
+}
+
+.titleUnderline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  margin: 0 auto 1.5rem;
+  border-radius: 2px;
+}
+
+/* right-aligned underline used in story section */
+.titleUnderlineRight {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  border-radius: 2px;
+  margin-bottom: 1.2rem;
+}
+
+[dir="rtl"] .titleUnderlineRight {
+  margin-right: 0;
+}
+
+/* ─────────────────────────────────────
+   HERO
+───────────────────────────────────── */
+.heroSection {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0f1c2e;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: url('/about.jpg') center / cover no-repeat;
+  opacity: 0.45;
+  transition: transform 8s ease;
+}
+
+.heroSection:hover .heroBg {
+  transform: scale(1.04);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 30, 60, 0.75) 0%,
+    rgba(0, 80, 180, 0.45) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  margin-top: 180px;
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  max-width: 800px;
+  animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: #d0e4ff;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 0.85rem 2.8rem;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  color: #ffffff;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.ctaButton:hover {
+  background: #007bff;
+  border-color: #007bff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.45);
+}
+
+/* ─────────────────────────────────────
+   STORY
+───────────────────────────────────── */
+.storySection {
+  padding: 6rem 0;
+  background: #F7FAFC;
+}
+
+.storyContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* RTL: image first, text second */
+[dir="rtl"] .storyContent {
+  direction: rtl;
+}
+
+.storyText {
+  order: 1;
+}
+
+[dir="rtl"] .storyText {
+  order: 2;
+}
+
+.storyImageWrap {
+  order: 2;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+[dir="rtl"] .storyImageWrap {
+  order: 1;
+}
+
+.storyImageWrap:hover {
+  transform: translateY(-6px);
+}
+
+.storyImg {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.storyImageWrap:hover .storyImg {
+  transform: scale(1.04);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 123, 255, 0.08),
+    rgba(0, 86, 210, 0.08)
+  );
+  pointer-events: none;
+}
+
+.storyHeading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1A365D;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.storySubtitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 1.8rem;
+}
+
+.storyParagraph {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #4A5568;
+  margin-bottom: 1.4rem;
+  text-align: justify;
+}
+
+/* ─────────────────────────────────────
+   VALUES
+───────────────────────────────────── */
+.valuesSection {
+  padding: 6rem 0;
+  background: #ffffff;
+}
+
+.valuesSection .sectionContainer {
+  max-width: 1860px;
+}
+
+.valuesGrid {
+  width: 100%;
+  max-width: 1580px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.valueCard {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.479), rgba(255, 255, 255, 0.315)),
+    url('/future2.png') center / cover no-repeat;
+  border-radius: 24px;
+  text-align: center;
+  padding: 2.8rem 2rem 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  border: 1px solid #E2E8F0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valueTop {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.valueCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.13);
+}
+
+.valueImageContainer {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 1.8rem;
+  position: relative;
+}
+
+.valueImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid #E2E8F0;
+  background: #f0f6ff;
+  padding: 12px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.valueCard:hover .valueImage {
+  border-color: #007bff;
+  transform: scale(1.08);
+}
+
+.valueFallbackIcon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  color: white;
+}
+
+.valueTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1A365D;
+  margin-bottom: 0.9rem;
+}
+
+.valueDescription {
+  color: #718096;
+  line-height: 1.7;
+  font-size: 0.97rem;
+}
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .valuesSection .sectionContainer {
+    max-width: 1200px;
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionContainer {
+    padding: 0 1.2rem;
+  }
+
+  .heroTitle {
+    font-size: 1.2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.05rem;
+  }
+
+  .storyContent {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .storyText,
+  .storyImageWrap,
+  [dir="rtl"] .storyText,
+  [dir="rtl"] .storyImageWrap {
+    order: unset;
+  }
+
+  .storyImg {
+    height: 300px;
+  }
+
+  .storyHeading {
+    font-size: 1.8rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+
+  .heroContent {
+    padding: 4rem 1.2rem 3rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+  }
+
+  .valueCard {
+    padding: 2rem 1.2rem;
+  }
+
+  .valueImageContainer {
+    width: 90px;
+    height: 90px;
+  }
+}

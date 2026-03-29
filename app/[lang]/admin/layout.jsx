@@ -1,0 +1,339 @@
+"use client";
+import styles from "@/styles/admin.module.css";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "@/providers/ContextProvider";
+import { use } from "react";
+import Link from "next/link";
+import { auth } from "@/configuration/firebase-config";
+import { signOut } from "firebase/auth";
+import useAuth from "@/hooks/UseAuth";
+import { usePathname, useRouter } from "next/navigation";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import ArrowDropDownSharpIcon from "@mui/icons-material/ArrowDropDownSharp";
+import ArrowDropUpSharpIcon from "@mui/icons-material/ArrowDropUpSharp";
+import MenuOpenRoundedIcon from "@mui/icons-material/MenuOpenRounded";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+
+import Loading from "@/components/Loading";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+
+export default function AdminAccount({ params, children }) {
+  const { lang } = use(params);
+  const router = useRouter();
+  const { contacts } = useContext(Context);
+  const pathName = usePathname();
+  const { loading, user, isAdmin } = useAuth();
+  const [showSettingDropdown, setShowSettingDropdown] = useState(false);
+
+  const unreadMessages = contacts.filter((contact) => contact.read === false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error.message);
+    }
+  };
+
+  const toggleSettingDropdown = () => {
+    setShowSettingDropdown(!showSettingDropdown);
+  };
+
+  const translations = {
+    en: {
+      systemManagement: "System Management",
+      articles: "",
+      contacts: "Contact Messages",
+      erpDetails: "Next ERP Details",
+      admins: "Administrators",
+      settings: "Contact Settings",
+      profile: "My Profile",
+      password: "Change Password",
+      email: "Change Email",
+      signOut: "Sign Out",
+    },
+    ar: {
+      systemManagement: "إدارة النظام",
+      articles: "",
+      contacts: "رسائل التواصل",
+      erpDetails: "تفاصيل نكست ERP",
+      admins: "المشرفون",
+      settings: "إعدادات الاتصال",
+      profile: "ملفي الشخصي",
+      password: "تغيير كلمة المرور",
+      email: "تغيير البريد الإلكتروني",
+      signOut: "تسجيل الخروج",
+    },
+  };
+
+  const t = translations[lang] || translations.en;
+
+  useEffect(() => {
+    if (!loading && (!user || !isAdmin)) {
+      router.push(`/${lang}/login`);
+    }
+  }, [loading, user, isAdmin]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  return user && isAdmin ? (
+    <>
+      {/*Header*/}
+      <div
+        className="d-flex align-items-center justify-content-between px-3 py-2"
+        style={{
+       
+
+        }}
+      >
+        <Link href={`/${lang}`} className="d-none d-lg-flex">
+          <img
+            src="/logo.png"
+            alt="happy face logo"
+            style={{ width: "140px" }}
+          />
+        </Link>
+
+    
+
+      
+        
+      </div>
+      <div className="d-flex bg-light">
+        <div
+          className={`offcanvas-lg offcanvas-${
+            lang === "ar" ? "end" : "start"
+          }`}
+          tabIndex="-1"
+          id="offcanvasMenu"
+          aria-labelledby="offcanvasMenuLabel"
+        >
+          {/* <div className="offcanvas-header">
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="offcanvas"
+              data-bs-target="#offcanvasMenu"
+              aria-label="Close"
+            ></button>
+          </div> */}
+          <div className="offcanvas-body">
+            <div
+              className="navigation bg-white p-3"
+              style={{
+                position: "fixed",
+                top: "88px",
+                bottom: 0,
+                overflowY: "auto",
+              }}
+            >
+              <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
+                <Link
+                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
+                    pathName === `/${lang}/admin/system-management`
+                      ? styles["active-route"]
+                      : ""
+                  }`}
+                  href={`/${lang}/admin/system-management`}
+                >
+                  <DashboardIcon />
+                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                    {t.systemManagement}
+                  </h5>
+                </Link>
+              </div>
+              <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
+                <Link
+                  className={`${styles[""]}  ${
+                    pathName === `/${lang}/admin/`
+                      ? styles[""]
+                      : ""
+                  }`}
+                  href={`/${lang}/admin/`}
+                >
+                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                    {t.articles}
+                  </h5>
+                </Link>
+              </div>
+              <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
+                <Link
+                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
+                    pathName === `/${lang}/admin/erp-details`
+                      ? styles["active-route"]
+                      : ""
+                  }`}
+                  href={`/${lang}/admin/erp-details`}
+                >
+                  <ArticleOutlinedIcon />
+                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                    {t.erpDetails}
+                  </h5>
+                </Link>
+              </div>
+              <div
+                data-bs-dismiss="offcanvas"
+                data-bs-target="#offcanvasMenu"
+                style={{ position: "relative" }}
+              >
+                <Link
+                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
+                    pathName === `/${lang}/admin/contacts`
+                      ? styles["active-route"]
+                      : ""
+                  }`}
+                  href={`/${lang}/admin/contacts`}
+                >
+                  <ContactsOutlinedIcon />
+                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                    {t.contacts}
+                  </h5>
+                  {unreadMessages.length > 0 && (
+                    <div
+                      className="badge rounded-pill bg-danger"
+                      style={{ position: "absolute", top: 17, right: 53 }}
+                    >
+                      {unreadMessages.length}
+                    </div>
+                  )}
+                </Link>
+              </div>
+              <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
+                <Link
+                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
+                    pathName === `/${lang}/admin/admins`
+                      ? styles["active-route"]
+                      : ""
+                  }`}
+                  href={`/${lang}/admin/admins`}
+                >
+                  <SupervisorAccountIcon />
+                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                    {t.admins}
+                  </h5>
+                </Link>
+              </div>
+              <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
+                <Link
+                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
+                    pathName === `/${lang}/admin/settings`
+                      ? styles["active-route"]
+                      : ""
+                  }`}
+                  href={`/${lang}/admin/settings`}
+                >
+                  <SettingsIcon />
+                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                    {t.settings}
+                  </h5>
+                </Link>
+              </div>
+              <div
+                className={`${styles["account-nav-item"]} mb-1 mb-xl-2 cursor-pointer`}
+                onClick={toggleSettingDropdown}
+              >
+                <SettingsOutlinedIcon />
+                <h5
+                  className={`m-0 ${lang === "en" ? "ms-3" : "me-3"} ${
+                    lang === "en" ? "me-5" : "ms-5"
+                  }`}
+                >
+                  {t.profile}
+                </h5>
+                {showSettingDropdown === false ? (
+                  <ArrowDropDownSharpIcon />
+                ) : (
+                  <ArrowDropUpSharpIcon />
+                )}
+              </div>
+              <div>
+                {showSettingDropdown && (
+                  <div style={{ paddingLeft: "40px" }}>
+                    <div
+                      data-bs-dismiss="offcanvas"
+                      data-bs-target="#offcanvasMenu"
+                    >
+                      <Link
+                        className={`${
+                          styles["account-nav-item"]
+                        } mb-1 mb-xl-2 ${
+                          pathName === `/${lang}/admin/profile`
+                            ? styles["active-route"]
+                            : ""
+                        }`}
+                        href={`/${lang}/admin/profile`}
+                        style={{ fontWeight: "500" }}
+                      >
+                        {t.profile}
+                      </Link>
+                    </div>
+                    <div
+                      data-bs-dismiss="offcanvas"
+                      data-bs-target="#offcanvasMenu"
+                    >
+                      <Link
+                        className={`${
+                          styles["account-nav-item"]
+                        } mb-1 mb-xl-2 ${
+                          pathName === `/${lang}/admin/change-password`
+                            ? styles["active-route"]
+                            : ""
+                        }`}
+                        href={`/${lang}/admin/change-password`}
+                        style={{ fontWeight: "500" }}
+                      >
+                        {t.password}
+                      </Link>
+                    </div>
+                    <div
+                      data-bs-dismiss="offcanvas"
+                      data-bs-target="#offcanvasMenu"
+                    >
+                      <Link
+                        className={`${
+                          styles["account-nav-item"]
+                        } mb-1 mb-xl-2 ${
+                          pathName === `/${lang}/admin/change-email`
+                            ? styles["active-route"]
+                            : ""
+                        }`}
+                        href={`/${lang}/admin/change-email`}
+                        style={{ fontWeight: "500" }}
+                      >
+                        {t.email}
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div
+                className={`${styles["sign-out"]} ${styles["account-nav-item"]} mt-5 cursor-pointer`}
+                onClick={handleLogout}
+                data-bs-dismiss="offcanvas"
+                data-bs-target="#offcanvasMenu"
+              >
+                <LogoutOutlinedIcon />
+                <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
+                  {t.signOut}
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`p-3 ${styles["account-child-container"]}`}>
+          {children}
+        </div>
+      </div>
+    </>
+  ) : (
+    <Loading />
+  );
+}
+ 

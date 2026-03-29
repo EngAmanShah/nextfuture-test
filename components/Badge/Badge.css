@@ -1,0 +1,419 @@
+.hero-section {
+ background: linear-gradient(90deg, #38BDF8, #3855d2, #000000);
+  color: #fff;
+  overflow: hidden;
+  padding: 3rem;       /* increased padding */
+
+
+}
+
+.hero-container {
+  max-width: 1200px;   /* slightly larger max width */
+  margin: 0 auto;
+}
+
+/* Text */
+.hero-section h2 {
+  font-size: 2.25rem;   /* larger heading */
+  line-height: 1.2;
+}
+
+.hero-section p {
+  font-size: 1.2rem;    /* larger paragraph */
+  line-height: 1.6;
+}
+
+/* Feature badges */
+.feature-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  background-color: #399dd9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feature-badge:hover {
+  transform: scale(1.05);
+  background-color: rgba(250, 250, 251, 0.8);
+}
+
+/* Shield / Icon */
+.shield-container {
+  position: relative;
+  width: 180px;   /* increased size */
+  height: 180px;
+  margin-bottom: 80px;
+  margin-top: 20px;
+
+}
+
+.shield-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;   /* increased */
+  height: 150px;  /* increased */
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px #fff, 0 0 50px #fff, 0 0 70px #fff;
+  animation: pulse-scale 1s infinite ease-in-out;
+}
+
+@keyframes pulse-scale {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 30px #fff, 0 0 50px #fff, 0 0 70px #fff;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 0 50px #fff, 0 0 70px #fff, 0 0 100px #fff;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 30px #fff, 0 0 50px #fff, 0 0 70px #fff;
+  }
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-section h2 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+  .shield-container {
+    width: 150px;
+    height: 150px;
+  }
+  .shield-center {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h2 {
+    font-size: 1.5rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .shield-container {
+    width: 120px;
+    height: 120px;
+  }
+  .shield-center {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Action Buttons */
+.badge-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0b66ff 0%, #0052cc 100%);
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 25px rgba(11, 102, 255, 0.4);
+}
+
+.badge-download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(11, 102, 255, 0.5);
+}
+
+.badge-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.badge-explore-btn:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .badge-download-btn,
+  .badge-explore-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Electronic Link Section */
+.electronic-link-section {
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.electronic-link-content {
+  text-align: center;
+}
+
+.electronic-link-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(56, 189, 248, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.electronic-link-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #38BDF8;
+  margin-bottom: 1rem;
+}
+
+.electronic-link-content .subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.electronic-link-content .description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Zakat Card */
+.zakat-card {
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0f7fa 100%);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.zakat-logo {
+  margin-bottom: 1.5rem;
+}
+
+.zakat-logo-img {
+  width: 120px;
+  height: auto;
+}
+
+.zakat-card h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0d6e6e;
+  margin-bottom: 1rem;
+}
+
+.zakat-card p {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.7;
+}
+
+/* Integrated Solutions Section */
+.integrated-solutions-section {
+  margin-top: 3rem;
+  padding: 3rem 2rem;
+  background: #f8fafc;
+  border-radius: 20px;
+}
+
+.integrated-solutions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.services-icons-grid {
+  background: #e8f4f8;
+  border-radius: 20px;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.services-homepage-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.integrated-content {
+  padding: 1rem;
+}
+
+.services-tag {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.15);
+  color: #0891b2;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.integrated-content h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0891b2;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.integrated-content p {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.8;
+}
+
+/* Services Grid - Keep for backwards compatibility */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.service-card h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+/* Responsive for new sections */
+@media (max-width: 992px) {
+  .integrated-solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .services-icons-grid {
+    order: 1;
+  }
+
+  .integrated-content {
+    order: 2;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .electronic-link-section {
+    margin-top: 2.5rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .electronic-link-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .integrated-solutions-section {
+    margin-top: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .integrated-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zakat-card {
+    padding: 1.5rem;
+  }
+
+  .zakat-logo-img {
+    width: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .electronic-link-section,
+  .integrated-solutions-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .electronic-link-content h3,
+  .integrated-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+}
