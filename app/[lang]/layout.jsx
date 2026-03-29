@@ -9,6 +9,7 @@ import ContextProvider from "@/providers/ContextProvider";
 import LayoutWrapper from "./LayoutWrapper";
 import BackToTopButton from "@/components/BackToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton"; // WhatsApp Floating Button
+import Footer from "@/components/Footer";
 
 
 export async function generateStaticParams() {
@@ -176,6 +177,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </main>
             <BackToTopButton />
             <WhatsAppButton lang={lang} />
+            <Footer lang={lang} />
           </LayoutWrapper>
         </ContextProvider>
       </body>

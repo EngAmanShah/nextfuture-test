@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 export default function LayoutWrapper({ children, lang }) {
   const pathname = usePathname();
@@ -12,7 +11,6 @@ export default function LayoutWrapper({ children, lang }) {
     <>
       {!isRegistrationPage && <Navbar lang={lang} />}
       {children}
-      {!isRegistrationPage && <Footer lang={lang} />}
     </>
   );
 }
