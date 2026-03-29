@@ -94,7 +94,6 @@ export default function ServiceHero({ lang = "ar" }) {
           left: 0;
           width: 100%;
           height: 100%;
-          z-index: 1;
           background-image: url('/future2.png');
           background-size: cover;
           filter: grayscale(100%) brightness(140.45%) contrast(100%);
@@ -110,14 +109,12 @@ export default function ServiceHero({ lang = "ar" }) {
           left: 0;
           width: 100%;
           height: 100%;
-          z-index: 2;
           background: linear-gradient(180deg, #005BAC 0%, #02417A 100%);
           opacity: 0.75;
         }
 
         .hero-content {
           position: relative;
-          z-index: 3;
           max-width: 1100px;
           width: 100%;
           padding: 0 32px;

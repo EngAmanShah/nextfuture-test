@@ -119,7 +119,6 @@ export default function HeroSection({ lang = "ar" }) {
           left: 0;
           width: 100%;
           height: 100%;
-          z-index: 2;
           background: linear-gradient(135deg, 
             rgba(11, 36, 71, 0.85) 0%, 
             rgba(11, 100, 150, 0.75) 40%, 
@@ -130,7 +129,6 @@ export default function HeroSection({ lang = "ar" }) {
 
         .hero-content {
           position: relative;
-          z-index: 3;
           max-width: 1000px;
           width: 100%;
           padding: 0 30px;

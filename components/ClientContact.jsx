@@ -164,7 +164,33 @@ export default function ContactUsClient({ lang }) {
       {/* ═══════════════════════════════════════════
           TOP SPLIT SECTION: form (left) + brand (right)
       ════════════════════════════════════════════ */}
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-section {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            min-height: auto !important;
+          }
+          .contact-form-panel {
+            order: 1;
+            padding: 2rem 1.5rem 2rem !important;
+          }
+          .contact-brand-panel {
+            order: 2;
+            min-height: 300px;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-form-panel {
+            padding: 1.5rem 1rem 1.5rem !important;
+          }
+          .contact-brand-panel {
+            min-height: 250px;
+          }
+        }
+      `}</style>
       <section
+        className="contact-section"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 390px",
@@ -174,6 +200,7 @@ export default function ContactUsClient({ lang }) {
       >
         {/* ── Left: form panel ── */}
         <div
+          className="contact-form-panel"
           style={{
             padding: "3rem 3rem 2.5rem",
             display: "flex",
@@ -305,6 +332,7 @@ export default function ContactUsClient({ lang }) {
 
         {/* ── Right: branded blue panel ── */}
         <div
+          className="contact-brand-panel"
           style={{
             position: "relative",
             background: "#2c7de0",
@@ -380,13 +408,35 @@ export default function ContactUsClient({ lang }) {
       {/* ═══════════════════════════════════════════
           CONTACT INFO CARDS SECTION
       ════════════════════════════════════════════ */}
+      <style>{`
+        .contact-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+        @media (max-width: 1024px) {
+          .contact-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 768px) {
+          .contact-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+          }
+        }
+      `}</style>
       <section style={{ background: "#f5f7fa", padding: "3rem 2rem" }}>
         {/* Three info cards */}
         <div
+          className="contact-cards-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1.25rem",
             maxWidth: "1080px",
             margin: "0 auto 2.5rem",
           }}
@@ -402,33 +452,18 @@ export default function ContactUsClient({ lang }) {
                 alignItems: "center",
                 gap: "1rem",
                 boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
-                flexDirection: isArabic ? "row-reverse" : "row",
+                flexDirection: "row",
               }}
             >
-              {/* Icon circle */}
-              <div
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  borderRadius: "50%",
-                  background: "#eef4fc",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                {info.icon}
-              </div>
-
-              {/* Text */}
-              <div style={{ textAlign: isArabic ? "right" : "left" }}>
+              {/* Text - appears first in LTR, pushed to left/center */}
+              <div style={{ textAlign: isArabic ? "right" : "left", flex: 1 }}>
                 <p
                   style={{
                     margin: "0 0 0.2rem",
                     fontWeight: "700",
                     fontSize: "1rem",
                     color: "#1a1a2e",
+                    textAlign: isArabic ? "right" : "left",
                   }}
                 >
                   {info.label}
@@ -440,15 +475,34 @@ export default function ContactUsClient({ lang }) {
                       fontSize: "0.88rem",
                       color: "#555",
                       textDecoration: "none",
+                      display: "block",
+                      textAlign: isArabic ? "right" : "left",
                     }}
                   >
                     {info.value}
                   </a>
                 ) : (
-                  <p style={{ margin: 0, fontSize: "0.88rem", color: "#555", lineHeight: 1.5 }}>
+                  <p style={{ margin: 0, fontSize: "0.88rem", color: "#555", lineHeight: 1.5, textAlign: isArabic ? "right" : "left" }}>
                     {info.value}
                   </p>
                 )}
+              </div>
+
+              {/* Icon circle - pushed to right in RTL */}
+              <div
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  borderRadius: "50%",
+                  background: "#eef4fc",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  marginLeft: isArabic ? "auto" : "0",
+                }}
+              >
+                {info.icon}
               </div>
             </div>
           ))}

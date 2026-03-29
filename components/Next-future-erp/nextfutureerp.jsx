@@ -392,7 +392,6 @@ const globalStyles = `
 }
 .hero-inner {
   position: relative;
-  z-index: 2;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;

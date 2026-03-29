@@ -109,7 +109,7 @@ export default async function RootLayout({ children, params }) {
   };
 
   return (
-    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
+    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         {/* Google Tag Manager */}
         <Script
@@ -172,7 +172,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <ContextProvider>
           <LayoutWrapper lang={lang}>
             <ToastContainer position="top-center" autoClose={3000} />
-            <main className="d-flex flex-column flex-grow-1" style={{ minHeight: "100vh" }}>
+            <main className="d-flex flex-column flex-grow-1">
               {children}
             </main>
             <BackToTopButton />

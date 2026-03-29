@@ -158,7 +158,6 @@ export default function ErpPackages({ lang }) {
           margin: 0 auto;
           padding: 0 20px;
           position: relative;
-          z-index: 1;
         }
 
         /* Header */
@@ -230,13 +229,11 @@ export default function ErpPackages({ lang }) {
           right: 0;
           bottom: 0;
           background-color: rgba(255, 255, 255, 0.47);
-          z-index: 1;
           border-radius: 20px;
         }
 
         .package-card > * {
           position: relative;
-          z-index: 2;
         }
 
         .package-card:hover {

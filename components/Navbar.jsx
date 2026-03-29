@@ -174,9 +174,9 @@ export default function Navbar({ lang }) {
         style={{
           background: scrolled
             ? "linear-gradient(135deg, #0a4d7c, #1277a8, #0a5a8c)"
-            : "rgba(10, 36, 71, 0.15)",
+            : "rgba(10, 36, 71, 0.85)",
           backdropFilter: scrolled ? "blur(10px)" : "blur(5px)",
-          boxShadow: scrolled ? "0 4px 20px rgba(10, 77, 124, 0.3)" : "none",
+          // boxShadow: scrolled ? "0 4px 20px rgba(10, 77, 124, 0.3)" : "none",
           transition: "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
         dir={lang === "ar" ? "rtl" : "ltr"}
@@ -463,11 +463,17 @@ export default function Navbar({ lang }) {
       <style jsx global>{`
         .navbar {
           padding: 0;
-          z-index: 1030;
+          z-index: 9999 !important;
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
         }
 
         .header-root {
           height: 75px;
+          z-index: 9999 !important;
         }
 
         .header-inner {
@@ -542,7 +548,7 @@ export default function Navbar({ lang }) {
           visibility: hidden;
           pointer-events: none;
           transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-          z-index: 1000;
+          z-index: 9995;
           border-radius: 12px;
           border: 1px solid rgba(0, 0, 0, 0.08);
           padding: 1.5rem;
@@ -573,7 +579,7 @@ export default function Navbar({ lang }) {
           pointer-events: none;
           display: none;
           transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-          z-index: 1000;
+          z-index: 9995;
           border-radius: 12px;
           border: 1px solid rgba(0, 0, 0, 0.08);
           padding: 1.5rem;
@@ -704,7 +710,7 @@ export default function Navbar({ lang }) {
           right: 0;
           bottom: 0;
           background: rgba(0, 0, 0, 0.5);
-          z-index: 1040;
+          z-index: 9997;
         }
 
         .mobile-sidebar {
@@ -716,7 +722,7 @@ export default function Navbar({ lang }) {
           background: #1a2744;
           box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
           transition: right 0.25s ease;
-          z-index: 1050;
+          z-index: 9998;
           overflow-y: auto;
           color: #fff;
           border-left: 2px solid #379DD7;

@@ -95,12 +95,10 @@ export default function WhyChooseUs({ lang }) {
             rgba(255, 255, 255, 0.97) 0%,
             rgba(255, 255, 255, 0.90) 100%
           );
-          z-index: 1;
         }
 
         .container {
           position: relative;
-          z-index: 2;
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 20px;
@@ -322,61 +320,52 @@ export default function WhyChooseUs({ lang }) {
           .feature-card {
             padding: 24px 20px;
             border-radius: 14px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: flex-start;
-            justify-content: space-between;
+            display: block;
+            position: relative;
           }
 
           .icon-wrapper {
-            margin-bottom: 0;
+            margin-bottom: 12px;
             margin-right: 0;
             margin-left: 0;
             min-width: 50px;
             width: 50px;
             height: 50px;
             flex-shrink: 0;
-            order: 2;
+            float: left;
           }
 
           .feature-title {
             font-size: 1.05rem;
             margin: 0 0 8px 0;
-            order: 1;
-            flex: 1;
-            min-width: 0;
             text-align: left;
           }
 
           .feature-description {
             font-size: 0.85rem;
             line-height: 1.55;
-            order: 3;
-            flex-basis: 100%;
             text-align: left;
+            clear: both;
           }
 
           [dir="rtl"] .feature-card {
             text-align: right;
-            justify-content: space-between;
+            position: relative;
           }
 
           [dir="rtl"] .icon-wrapper {
+            float: right !important;
             margin-right: 0;
-            margin-left: 0;
-            order: 2;
+            margin-left: 12px;
           }
 
           [dir="rtl"] .feature-title {
-            order: 1;
             text-align: right;
-            flex: 1;
           }
 
           [dir="rtl"] .feature-description {
-            order: 3;
             text-align: right;
+            clear: both;
           }
         }
 
@@ -411,60 +400,50 @@ export default function WhyChooseUs({ lang }) {
           .feature-card {
             padding: 20px 18px;
             border-radius: 14px;
-            flex-direction: row;
-            text-align: left;
-            align-items: flex-start;
-            gap: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: block;
+            position: relative;
           }
 
           .icon-wrapper {
-            margin-bottom: 0;
+            margin-bottom: 8px;
             margin-right: 0;
             min-width: 48px;
             width: 48px;
             height: 48px;
             flex-shrink: 0;
-            order: 2;
+            float: left;
           }
 
           .feature-title {
             font-size: 1rem;
             margin: 0 0 6px 0;
-            order: 1;
-            flex: 1;
-            min-width: 0;
             text-align: left;
           }
 
           .feature-description {
             font-size: 0.82rem;
             line-height: 1.5;
-            order: 3;
-            flex-basis: 100%;
+            clear: both;
           }
 
           [dir="rtl"] .feature-card {
             text-align: right;
-            flex-direction: row;
-            justify-content: space-between;
+            position: relative;
           }
 
           [dir="rtl"] .icon-wrapper {
-            order: 2;
+            float: right !important;
+            margin-right: 0;
+            margin-left: 8px;
           }
 
           [dir="rtl"] .feature-title {
-            order: 1;
             text-align: right;
-            flex: 1;
           }
 
           [dir="rtl"] .feature-description {
-            order: 3;
             text-align: right;
+            clear: both;
           }
         }
 
@@ -511,60 +490,51 @@ export default function WhyChooseUs({ lang }) {
           .feature-card {
             padding: 18px 16px;
             border-radius: 12px;
-            flex-direction: row;
-            text-align: left;
-            align-items: flex-start;
-            gap: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: block;
+            position: relative;
           }
 
           .icon-wrapper {
-            margin-bottom: 0;
+            margin-bottom: 8px;
             min-width: 44px;
             width: 44px;
             height: 44px;
             flex-shrink: 0;
-            order: 2;
+            float: left;
+            margin-right: 8px;
           }
 
           .feature-title {
             font-size: 0.95rem;
             margin: 0 0 5px 0;
             font-weight: 600;
-            order: 1;
-            flex: 1;
-            min-width: 0;
             text-align: left;
           }
 
           .feature-description {
             font-size: 0.8rem;
             line-height: 1.5;
-            order: 3;
-            flex-basis: 100%;
+            clear: both;
           }
 
           [dir="rtl"] .feature-card {
             text-align: right;
-            flex-direction: row;
-            justify-content: space-between;
+            position: relative;
           }
 
           [dir="rtl"] .icon-wrapper {
-            order: 2;
+            float: right !important;
+            margin-right: 0;
+            margin-left: 8px;
           }
 
           [dir="rtl"] .feature-title {
-            order: 1;
             text-align: right;
-            flex: 1;
           }
 
           [dir="rtl"] .feature-description {
-            order: 3;
             text-align: right;
+            clear: both;
           }
         }
 
@@ -613,60 +583,51 @@ export default function WhyChooseUs({ lang }) {
           .feature-card {
             padding: 16px 14px;
             border-radius: 12px;
-            flex-direction: row;
-            text-align: left;
-            align-items: flex-start;
-            gap: 9px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: block;
+            position: relative;
           }
 
           .icon-wrapper {
-            margin-bottom: 0;
+            margin-bottom: 8px;
             min-width: 40px;
             width: 40px;
             height: 40px;
             flex-shrink: 0;
-            order: 2;
+            float: left;
+            margin-right: 8px;
           }
 
           .feature-title {
             font-size: 0.9rem;
             margin: 0 0 4px 0;
             font-weight: 600;
-            order: 1;
-            flex: 1;
-            min-width: 0;
             text-align: left;
           }
 
           .feature-description {
             font-size: 0.76rem;
             line-height: 1.45;
-            order: 3;
-            flex-basis: 100%;
+            clear: both;
           }
 
           [dir="rtl"] .feature-card {
             text-align: right;
-            flex-direction: row;
-            justify-content: space-between;
+            position: relative;
           }
 
           [dir="rtl"] .icon-wrapper {
-            order: 2;
+            float: right !important;
+            margin-right: 0;
+            margin-left: 8px;
           }
 
           [dir="rtl"] .feature-title {
-            order: 1;
             text-align: right;
-            flex: 1;
           }
 
           [dir="rtl"] .feature-description {
-            order: 3;
             text-align: right;
+            clear: both;
           }
         }
 

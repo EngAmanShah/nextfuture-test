@@ -19,7 +19,8 @@ export default function Footer({ lang = "ar" }) {
     setCurrentDate(new Date());
   }, []);
 
-  if (!pathname || pathname?.startsWith(`/${lang}/admin`)) {
+  // Hide footer on admin pages only
+  if (pathname?.startsWith(`/${lang}/admin`)) {
     return null;
   }
 
@@ -91,7 +92,6 @@ export default function Footer({ lang = "ar" }) {
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          z-index: 0;
         }
 
         .footer-overlay {
@@ -101,12 +101,10 @@ export default function Footer({ lang = "ar" }) {
           right: 0;
           bottom: 0;
           background-color: rgba(0, 82, 156, 0.85);
-          z-index: 1;
         }
 
         .container {
           position: relative;
-          z-index: 2;
           max-width: 1100px;
           margin: 0 auto;
           padding: 0 20px;
@@ -329,6 +327,7 @@ export default function Footer({ lang = "ar" }) {
 
       <footer
         className="footer-section"
+        suppressHydrationWarning
         style={{
           direction: isArabic ? "rtl" : "ltr",
           textAlign: isArabic ? "right" : "left",

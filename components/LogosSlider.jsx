@@ -235,7 +235,6 @@ export default function LogosSlider({ lang = "ar" }) {
           top: 0;
           bottom: 0;
           width: 40px;
-          z-index: 2;
           pointer-events: none;
         }
 
