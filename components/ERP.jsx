@@ -11,54 +11,74 @@ export default function ErpPackages({ lang }) {
       subtitle: "Integrated ERP systems for modern businesses including financial management, sales, inventory, CRM, and AI-powered insights in one system.",
       packages: [
         {
-          name: "Basic Package",
-          price: "65",
-          period: "/month",
+          name: "Basic",
+          price: "49",
+          oldPrice: "99",
+          period: "/mo",
+          users: "1 user + 1 free",
+          branches: "1 branch",
+          warehouses: "1 warehouse",
+          suitableFor: "Startups, Small shops",
           bgImage: "/future2.png",
           features: [
-            "Invoicing & Receipts",
+            "Invoicing & receipts",
             "Limited products & invoices",
-            "Accounting",
+            "Accounting accounts",
             "Inventory",
-            "Sales & Purchases",
-            "Customer management",
+            "Sales & purchases",
+            "Customer & supplier management",
             "Permissions management"
           ]
         },
         {
-          name: "Basic Package",
-          price: "65",
-          period: "/month",
-       bgImage: "/future2.png",
+          name: "Pro",
+          price: "149",
+          oldPrice: "299",
+          period: "/mo",
+          users: "Up to 5 users + 1 free",
+          branches: "Up to 3 branches",
+          warehouses: "Up to 3 warehouses",
+          suitableFor: "Medium companies, Retail chains, Restaurants",
+          bgImage: "/future2.png",
           features: [
-            "Invoicing & Receipts",
-            "Limited products & invoices",
-            "Accounting",
-            "Inventory",
-            "Sales & Purchases",
-            "Customer management",
-            "Permissions management"
+            "Unlimited products & invoices",
+            "All basic features",
+            "Advanced accounting & reports",
+            "Point of Sale (POS)",
+            "Custom dashboards",
+            "Bulk offers",
+            "AI integration",
+            "Designated account manager"
           ]
         },
         {
-          name: "Basic Package",
-          price: "65",
-          period: "/month",
-           bgImage: "/future2.png",
+          name: "Plus",
+          price: "299",
+          oldPrice: "599",
+          period: "/mo",
+          users: "Up to 10 users + 5 free",
+          branches: "Up to 5 branches",
+          warehouses: "Up to 5 warehouses",
+          suitableFor: "Large companies, Trading chains, Factories",
+          bgImage: "/future2.png",
           features: [
-            "Invoicing & Receipts",
-            "Limited products & invoices",
-            "Accounting",
-            "Inventory",
-            "Sales & Purchases",
-            "Customer management",
-            "Permissions management"
+            "Everything in Pro +",
+            "All system modules",
+            "ZATCA integration",
+            "E-invoicing",
+            "Priority support (24/7)",
+            "Hourly backups",
+            "Comprehensive training (20 hours)",
+            "Full backup services"
           ]
         },
-    
       ],
       choosePackage: "Choose Package",
       purchase: "Purchase",
+      users: "Users & Branches",
+      branches: "Branches",
+      warehouses: "Warehouses",
+      suitableFor: "Suitable for",
       branch: "Branch",
       warehouse: "Warehouse"
     },
@@ -68,8 +88,13 @@ export default function ErpPackages({ lang }) {
       packages: [
         {
           name: "الباقة الأساسية",
-          price: "65",
+          price: "49",
+          oldPrice: "99",
           period: "/شهراً",
+          users: "مستخدم واحد + 1 مجاناً",
+          branches: "فرع واحد",
+          warehouses: "مخزن واحد",
+          suitableFor: "شركات ناشئة، متاجر صغيرة",
           bgImage: "/future2.png",
           features: [
             "الفوترة والإيصالات",
@@ -77,44 +102,59 @@ export default function ErpPackages({ lang }) {
             "حسابات المحاسبة",
             "المخزون",
             "المبيعات والمشتريات",
-            "إدارة العملاء والموجودين",
+            "إدارة العملاء والموردين",
             "إدارة الصلاحيات"
           ]
         },
         {
-          name: "الباقة الأساسية",
-          price: "65",
+          name: "برو",
+          price: "149",
+          oldPrice: "299",
           period: "/شهراً",
+          users: "حتى 5 مستخدمين + 1 مجاناً",
+          branches: "حتى 3 فروع",
+          warehouses: "حتى 3 مخازن",
+          suitableFor: "شركات متوسطة، سلاسل تجزئة، مطاعم",
           bgImage: "/future2.png",
           features: [
-            "الفوترة والإيصالات",
-            "منتجات وفواتير محدودة",
-            "حسابات المحاسبة",
-            "المخزون",
-            "المبيعات والمشتريات",
-            "إدارة العملاء والموجودين",
-            "إدارة الصلاحيات"
+            "منتجات وفواتير غير محدودة",
+            "كل ميزات الباقة الأساسية",
+            "محاسبة متقدمة وتقارير",
+            "نقطة بيع (POS)",
+            "لوحات بيانات مخصصة",
+            "عروض جماعية",
+            "تكامل الذكاء الاصطناعي",
+            "مدير حساب مخصص"
           ]
         },
         {
-          name: "الباقة الأساسية",
-          price: "65",
+          name: "بلس",
+          price: "299",
+          oldPrice: "599",
           period: "/شهراً",
+          users: "حتى 10 مستخدمين + 5 مجاناً",
+          branches: "حتى 5 فروع",
+          warehouses: "حتى 5 مخازن",
+          suitableFor: "شركات كبيرة،سلاسل تجارية،مصانع",
           bgImage: "/future2.png",
           features: [
-            "الفوترة والإيصالات",
-            "منتجات وفواتير محدودة",
-            "حسابات المحاسبة",
-            "المخزون",
-            "المبيعات والمشتريات",
-            "إدارة العملاء والموجودين",
-            "إدارة الصلاحيات"
+            "كل ما في برو +",
+            "جميع وحدات النظام",
+            "تكامل زاتكا",
+            "الفاتورة الإلكترونية",
+            "دعم أولوية (24/7)",
+            "نسخ احتياطي بالساعة",
+            "تدريب شامل (20 ساعة)",
+            "خدمات نسخ احتياطي كاملة"
           ]
         },
-     
       ],
       choosePackage: "اختر الباقة",
       purchase: "شراء",
+      users: "المستخدمون والفروع",
+      branches: "الفروع",
+      warehouses: "المستودعات",
+      suitableFor: "مناسب لـ",
       branch: "فرع",
       warehouse: "مخزن"
     }
@@ -204,12 +244,22 @@ export default function ErpPackages({ lang }) {
           transition: all 0.3s ease;
           display: flex;
           flex-direction: column;
-          height: 100%;
           position: relative;
           overflow: hidden;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
+          text-align: left;
+          height: 100%;
+        }
+
+        .erp-section[dir="rtl"] .package-card {
+          direction: rtl;
+          text-align: right;
+        }
+
+        .erp-section[dir="rtl"] .package-price {
+          direction: rtl;
         }
 
         .package-card::before {
@@ -259,6 +309,13 @@ export default function ErpPackages({ lang }) {
           justify-content: center;
           gap: 6px;
           direction: ltr;
+        }
+
+        .old-price {
+          font-size: 1.1rem;
+          color: #999;
+          text-decoration: line-through;
+          margin-right: 5px;
         }
 
         .price {
@@ -416,13 +473,9 @@ export default function ErpPackages({ lang }) {
           margin-right: 0;
           margin-left: 5px;
         }
-        
-        [dir="rtl"] .meta-item {
-          flex-direction: row-reverse;
-        }
       `}</style>
 
-      <section className="erp-section">
+      <section className="erp-section" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         <div className="container">
           {/* Header */}
           <div className="header">
@@ -452,6 +505,7 @@ export default function ErpPackages({ lang }) {
                 <h3 className="package-name">{pkg.name}</h3>
                 
                 <div className="package-price">
+                  {pkg.oldPrice && <span className="old-price">﷼{pkg.oldPrice}</span>}
                   {pkg.period &&
                   (pkg.period.includes('شهراً') ||
                     pkg.period.toLowerCase().includes('month')) && (
@@ -461,12 +515,8 @@ export default function ErpPackages({ lang }) {
                       className="riyal-icon"
                     />
                   )}
-                  <span className="price">{pkg.price}</span>
-                  {!pkg.period ||
-                  !(pkg.period.includes('شهراً') ||
-                    pkg.period.toLowerCase().includes('month')) ? (
-                    <span className="price-period">{pkg.period}</span>
-                  ) : null}
+                  <span className="price">﷼{pkg.price}</span>
+                  <span className="price-period">{pkg.period}</span>
                 </div>
 
                 <ul className="features-list">
@@ -480,16 +530,20 @@ export default function ErpPackages({ lang }) {
 
                 <div className="package-meta">
                   <div className="meta-item">
-                    <span>{lang === 'ar' ? 'الفرع' : 'Branch'}</span>
-                    <span>{pkg.branch || (lang === 'ar' ? 'فرع واحد' : 'One branch')}</span>
+                    <span>{t.users}</span>
+                    <span>{pkg.users}</span>
                   </div>
                   <div className="meta-item">
-                    <span>{lang === 'ar' ? 'المخزن' : 'Warehouse'}</span>
-                    <span>{pkg.warehouse || (lang === 'ar' ? 'مخزن واحد' : 'One warehouse')}</span>
+                    <span>{t.branches}</span>
+                    <span>{pkg.branches}</span>
                   </div>
                   <div className="meta-item">
-                    <span>{lang === 'ar' ? 'التكلفة' : 'Cost'}</span>
-                    <span>{pkg.costPeriod || (lang === 'ar' ? '40 شهرياً' : '40 /month')}</span>
+                    <span>{t.warehouses}</span>
+                    <span>{pkg.warehouses}</span>
+                  </div>
+                  <div className="meta-item">
+                    <span>{t.suitableFor}</span>
+                    <span>{pkg.suitableFor}</span>
                   </div>
                 </div>
 

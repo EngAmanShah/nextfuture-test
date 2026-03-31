@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Rating from "@mui/material/Rating";
+import { User, Users } from "lucide-react";
 
 export default function Testimonials({ lang = "en" }) {
   const [slidesToShow, setSlidesToShow] = useState(3);
@@ -10,31 +11,37 @@ const testimonialsContent = {
   en: [
     {
       name: "Abdullah Al-Qahtani",
+      gender: "male",
       quote:
         "Polite treatment and high professionalism from the very first meeting. They created a website for my project, and it turned out even better than I imagined. Honestly, it made a big difference in attracting customers.",
     },
     {
       name: "Nora Al-Shehri",
+      gender: "female",
       quote:
         "What I liked most was the speed of execution and commitment to deadlines. Their team is very cooperative and understands your needs without complications. I highly recommend them.",
     },
     {
       name: "Turki Al-Otaibi",
+      gender: "male",
       quote:
         "I requested mobile app development, and the result was excellent in terms of design and ease of use. Even after delivery, the technical support team followed up with me step by step.",
     },
     {
       name: "Reem Al-Ghamdi",
+      gender: "female",
       quote:
         "I worked with them on an e-commerce store, and after launch, sales increased noticeably. Professional work and attention to the smallest details.",
     },
     {
       name: "Faisal Al-Dosari",
+      gender: "male",
       quote:
         "The management system they created made my daily work much easier. It saved me time and effort, and everything became organized and clear. More than a wonderful experience.",
     },
     {
       name: "Hind Al-Mutairi",
+      gender: "female",
       quote:
         "Their approach is flexible, and they understand the Saudi market very well. They helped improve search engine visibility and digital marketing, and the results were very satisfying.",
     },
@@ -42,31 +49,37 @@ const testimonialsContent = {
   ar: [
     {
       name: "عبدالله القحطاني",
+      gender: "male",
       quote:
         "تعامل راقي واحترافية عالية من أول اجتماع. سويت عندهم موقع إلكتروني لمشروعي وطلع بشكل أفضل مما كنت متخيل. صراحة فرق معي كثير في جذب العملاء.",
     },
     {
       name: "نورة الشهري",
+      gender: "female",
       quote:
         "أكثر شيء عجبني سرعة التنفيذ والالتزام بالمواعيد. فريقهم متعاون جدًا ويفهم احتياجك بدون تعقيد. أنصح فيهم وبقوة.",
     },
     {
       name: "تركي العتيبي",
+      gender: "male",
       quote:
         "طلبت تطوير تطبيق جوال، والنتيجة كانت ممتازة من ناحية التصميم وسهولة الاستخدام. حتى بعد التسليم، الدعم الفني كان متابع معي خطوة بخطوة.",
     },
     {
       name: "ريم الغامدي",
+      gender: "female",
       quote:
         "اشتغلت معهم على متجر إلكتروني، والحمد لله بعد الإطلاق زادت المبيعات بشكل واضح. شغل احترافي واهتمام بأدق التفاصيل.",
     },
     {
       name: "فيصل الدوسري",
+      gender: "male",
       quote:
         "نظام الإدارة اللي سووه لي سهّل شغلي اليومي بشكل كبير. وفّر علي وقت وجهد، وكل شيء صار مرتب وواضح قدامي. تجربة أكثر من رائعة.",
     },
     {
       name: "هند المطيري",
+      gender: "female",
       quote:
         "تعاملهم مرن ويفهمون السوق السعودي كويس. ساعدوني في تحسين الظهور بمحركات البحث والتسويق الرقمي، والنتائج كانت مرضية جدًا.",
     },
@@ -189,16 +202,28 @@ const testimonialsContent = {
           width: 62px;
           height: 62px;
           border-radius: 50%;
-          border: 2px solid #fff;
+          border: 2px solid #0f4f8a;
           overflow: hidden;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
           flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #0f4f8a 0%, #1a6ab8 100%);
         }
 
-        .avatar {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .avatar-icon {
+          width: 36px;
+          height: 36px;
+          color: #ffffff;
+          stroke: #ffffff !important;
+          fill: none;
+        }
+
+        .avatar-icon path,
+        .avatar-icon circle {
+          stroke: #ffffff !important;
+          fill: none !important;
         }
 
         .quote {
@@ -244,7 +269,11 @@ const testimonialsContent = {
                     </div>
                   </div>
                   <div className="avatar-wrap">
-                    <img src="/home-img1.png" alt={user.name} className="avatar" />
+                    {user.gender === "female" ? (
+                      <Users className="avatar-icon" style={{ color: '#ffffff', stroke: '#ffffff' }} />
+                    ) : (
+                      <User className="avatar-icon" style={{ color: '#ffffff', stroke: '#ffffff' }} />
+                    )}
                   </div>
                 </div>
                 <p className="quote">{user.quote}</p>

@@ -161,12 +161,12 @@ export default function TechMarquee({ lang = "en" }) {
     { icon: GiCube, name: "Blockchain" },
   ];
 
-  const renderItems = (keyPrefix) =>
+  const renderItems = () =>
     techItems.map((tech, index) => {
       const Icon = tech.icon;
       return (
-        <div key={`${keyPrefix}-${index}`} className="tech-item">
-          <Icon className={`tech-icon ${tech.name.toLowerCase()}`} />
+        <div key={index} className="tech-item">
+          <Icon className={`tech-icon ${tech.name.toLowerCase().replace(/\./g, '').replace(/\s/g, '')}`} />
           <span>{t.techNames[tech.name]}</span>
         </div>
       );
@@ -183,10 +183,10 @@ export default function TechMarquee({ lang = "en" }) {
           <p className="text-white text-wrap">{t.description}</p>
         </div>
 
-        <div className="marquee marquee-left mt-4">
-          <div className="marquee-content">
-            {renderItems("main")}
-            {renderItems("clone")}
+        <div className="marquee-container">
+          <div className="marquee-track">
+            {renderItems()}
+            {renderItems()}
           </div>
         </div>
       </div>

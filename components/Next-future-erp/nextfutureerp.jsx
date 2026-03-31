@@ -151,7 +151,7 @@ export default function NextFutureERPPage() {
 
         <ERP lang={lang} />
 
-        <CustomERPSolutionsSection t={t} isRTL={isRTL} />
+        <CustomERPSolutionsSection t={t} isRTL={isRTL} lang={lang} />
 
       </div>
     </>
@@ -313,15 +313,19 @@ function WhyCard({ feature, align, isRTL }) {
   );
 }
 
-function CustomERPSolutionsSection({ t, isRTL }) {
+function CustomERPSolutionsSection({ t, isRTL, lang }) {
+  const router = useRouter();
+
+  const handleContact = () => {
+    router.push(`/${lang}/contact-us`);
+  };
+
   return (
     <section className="custom-erp-section">
       <div className="custom-erp-overlay" />
       <div className="custom-erp-inner">
         <div className="custom-erp-top">
-      
-
-          <div className="custom-erp-content">
+          <div className={`custom-erp-content ${isRTL ? 'custom-erp-content-rtl' : 'custom-erp-content-ltr'}`}>
             <h2 className="custom-erp-title">
               {t.customErpTitle} <span>{t.customErpTitleSpan}</span>
             </h2>
@@ -347,13 +351,14 @@ function CustomERPSolutionsSection({ t, isRTL }) {
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="custom-erp-cta">
           <Image src="/logo1.png" alt="NF" width={64} height={48} style={{ objectFit: "contain" }} />
           <h3>{t.readyToBuild}</h3>
           <p>{t.letsDiscuss}</p>
-          <button type="button">{t.contactUs}</button>
+          <button type="button" onClick={handleContact}>{t.contactUs}</button>
         </div>
       </div>
     </section>
@@ -371,7 +376,7 @@ const globalStyles = `
 /* ── HERO ── */
 .hero-section {
   position: relative;
-  min-height: 620px;
+  min-height: 220px !important;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -395,14 +400,14 @@ const globalStyles = `
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 60px 48px;
+  padding: 40px 48px;
   display: flex;
   justify-content: flex-end;
 }
 .hero-content {
   width: 100%;
   max-width: 1800px;
-  margin-top: 180px;
+  margin-top: 100px;
 }
 .hero-content-ltr {
   text-align: left ;
@@ -562,12 +567,11 @@ const globalStyles = `
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
-  margin-right: auto;
+  margin: 0 auto 18px;
 }
 [dir="rtl"] .module-icon-wrap {
-  margin-right: 0;
   margin-left: auto;
+  margin-right: auto;
 }
 .module-icon-soon {
   flex-direction: column;
@@ -581,14 +585,29 @@ const globalStyles = `
   color: #1a9e5a;
   letter-spacing: 1px;
 }
+.module-card {
+  position: relative;
+  flex: 0 1 calc((100% - 36px) / 3);
+  min-height: 220px;
+  padding: 36px 28px;
+  border: 1px solid rgba(30,80,200,0.08);
+  border-radius: 20px;
+  background: url('/future2.png') center/cover;
+  text-align: center;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: default;
+}
+
 .module-title {
-  text-align: right !important;
+  text-align: center;
   font-size: 16px;
   font-weight: 700;
   color: #0d1a3a;
   margin-bottom: 10px;
 }
 .module-desc {
+  text-align: center;
   font-size: 13px;
   color: #5a6a8a;
   line-height: 1.75;
@@ -763,18 +782,37 @@ const globalStyles = `
   background: linear-gradient(90deg, rgba(255,255,255,0.88) 0%, rgba(255, 255, 255, 0.73) 100%);
 }
 .custom-erp-inner {
-  max-width: 1160px;
+  max-width: 1060px;
   margin: 0 auto;
-  padding: 64px 32px;
+  padding: 48px 24px;
   position: relative;
   z-index: 1;
 }
 .custom-erp-top {
   display: grid;
-  grid-template-columns: 44% 56%;
-  gap: 32px;
-  align-items: stretch;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
 }
+.custom-erp-content {
+  max-width: 100%;
+}
+.custom-erp-point {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(15,98,195,0.12);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+.custom-erp-point h4 {
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+.custom-erp-point p {
+  font-size: 13px;
+  margin: 0;
+}
+
 .custom-erp-image {
   background-image: url('/next-erp/erp-custom.jpg');
   min-height: 400px;
@@ -783,12 +821,35 @@ const globalStyles = `
   background-position: center;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 }
+
+[dir="rtl"] .custom-erp-image {
+  transform: scaleX(-1);
+  filter: none;
+}
+
+[dir="rtl"] .custom-erp-image * {
+  transform: scaleX(-1);
+}
+
 .custom-erp-content {
+  text-align: left;
+  direction: ltr;
+}
+.custom-erp-content-rtl {
+  text-align: right;
+  direction: rtl;
+}
+.custom-erp-content-ltr {
+  text-align: left;
+  direction: ltr;
+}
+[dir="rtl"] .custom-erp-content-ltr {
+  text-align: left; /* explicit for RTL navigation not to flip this content */
+}
+[dir="rtl"] .custom-erp-content-rtl {
   text-align: right;
 }
-[dir="rtl"] .custom-erp-content {
-  text-align: justify;
-}
+
 .custom-erp-title {
   font-size: clamp(28px, 4vw, 44px);
   color: #12213f;
@@ -812,9 +873,63 @@ const globalStyles = `
   margin-bottom: 28px;
 }
 .custom-erp-points {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.custom-erp-points::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+.custom-erp-point {
+  flex: 0 0 calc(25% - 10px);
+  min-width: 240px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 1200px) {
+  .custom-erp-point {
+    flex: 0 0 40%;
+    min-width: 260px;
+  }
+}
+
+@media (max-width: 900px) {
+  .custom-erp-point {
+    flex: 0 0 46%;
+    min-width: calc(46% - 8px);
+    max-width: 46%;
+  }
+}
+
+@media (max-width: 680px) {
+  .custom-erp-point {
+    flex: 0 0 42%;
+    min-width: calc(42% - 8px);
+    max-width: 42%;
+  }
+}
+
+@media (max-width: 560px) {
+  .custom-erp-point {
+    flex: 0 0 44%;
+    min-width: calc(44% - 8px);
+    max-width: 44%;
+  }
+}
+
+@media (max-width: 380px) {
+  .custom-erp-point {
+    flex: 0 0 48%;
+    min-width: calc(48% - 8px);
+    max-width: 48%;
+  }
 }
 .custom-erp-point {
   background: rgba(255,255,255,0.72);

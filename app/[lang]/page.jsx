@@ -19,29 +19,26 @@ export default async function Home({ params }) {
 
   const content = {
     en: {
-      headingTitle: "Launch into the future with Next Future",
+      headingTitle: "Step into the future with Next Future",
       heroHeadline:
-        "We put you at the heart of digital transformation with innovative, comprehensive tech solutions.",
+        "We place you at the center of digital transformation with innovative, comprehensive tech solutions.",
       heroBig:
-        "We build solutions that support your ambitions and meet your business needs.",
-      heroFooter:
-        "Helping you adapt to rapid changes in the tech world.",
+        "We create solutions that support your ambitions and meet your business needs.",
+      heroFooter: "Helping you adapt to rapid changes in the tech world.",
       shopNow: "Discover Our Services",
-      whyChooseTitle: "Why Partner with Next Future Information",
+      whyChooseTitle: "Why Partner with Next Future",
       whyChooseDescription:
-        "We understand your needs and deliver innovative solutions",
+        "We understand your needs and deliver innovative, tailored solutions.",
     },
     ar: {
       headingTitle: "انطلق نحو المستقبل مع نكست فيوتشر",
       heroHeadline: "نضعك في قلب التحول الرقمي مع حلول تقنية مبتكرة وشاملة",
       heroBig:
         "نقدم لك حلولا مصممة لدعم طموحاتك ولتلبية احتياجات عملك، مما يساعدك على التكيف مع التغيرات السريعة في عالم التقنية.",
-      heroFooter:
-        "نساعدك على التأقلم مع التغيرات السريعة في عالم التقنية.",
+      heroFooter: "نساعدك على التأقلم مع التغيرات السريعة في عالم التقنية.",
       shopNow: "اكتشف خدماتنا",
       whyChooseTitle: "لماذا تختار نكست فيوتشر",
-      whyChooseDescription:
-        "نتفهم احتياجاتك ونقدم حلولاً مبتكرة",
+      whyChooseDescription: "نتفهم احتياجاتك ونقدم حلولاً مبتكرة",
     },
   };
 
@@ -57,29 +54,27 @@ export default async function Home({ params }) {
 
   return (
     <>
-
       <Hero lang={lang} />
 
       <Offer lang={lang} />
 
-        <Features
-          lang={lang}
-          title={whyChooseTitle}
-          subtitle={whyChooseDescription}
-        />
-     <ERP lang={lang} />
-     
-    <ZakatAuthoritySection lang={lang} />
+      <Features
+        lang={lang}
+        title={whyChooseTitle}
+        subtitle={whyChooseDescription}
+      />
+      <ERP lang={lang} />
+
+      <ZakatAuthoritySection lang={lang} />
 
       {/* <ServicesSection params={{ lang }} /> */}
 
       {/* NextFuture ERP Section */}
-  
 
       {/* <Badge lang={lang} /> */}
       {/* <Market lang={lang} /> */}
       {/* <ValueSlider lang={lang} /> */}
-      
+
       {/* <Products lang={lang} /> */}
       <Testimonials lang={lang} />
       <LogosSlider lang={lang} />

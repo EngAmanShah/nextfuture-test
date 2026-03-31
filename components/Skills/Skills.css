@@ -1,62 +1,52 @@
-/* Wrapper for marquee + particles */
+/* Wrapper for marquee */
 .tech-marquee-wrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: #379DD7; /* dark blue background */
-}
-
-/* Particle canvas behind everything */
-.tech-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none; /* so canvas doesn't block interactions */
+  background: #379DD7;
 }
 
 /* Marquee base content */
 .tech-marquee {
   position: relative;
-  z-index: 1; /* above canvas */
-  white-space: nowrap;
+  z-index: 1;
   width: 100%;
-  overflow: hidden;
-  padding: 5rem 0; /* vertical padding */
-  background: transparent; /* transparent for particles to show through */
+  padding: 5rem 0;
+  background: transparent;
   color: #000000;
 }
 
-/* Marquee content container */
-.marquee {
-  position: relative;
+/* Container that hides overflow */
+.marquee-container {
   width: 100%;
   overflow: hidden;
+  position: relative;
+  margin-top: 2rem;
 }
 
-.marquee-content {
-  display: inline-flex;
-  gap: 80px; /* spacing between items */
-  font-size: 1rem; /* reset text size for icons */
-  width: max-content; /* Ensures content takes full width */
+/* The moving track - CRITICAL FIXES */
+.marquee-track {
+  display: flex;
+  gap: 80px;
+  width: max-content;
+  animation: scrollInfinite 60s linear infinite;
   will-change: transform;
 }
 
-/* Two synchronized strips for uninterrupted scrolling */
-.marquee-left .marquee-content {
-  animation: scroll-left 60s linear infinite;
-}
-
-/* Scroll animation - scroll by 50% to create seamless loop */
-@keyframes scroll-left {
+/* KEY FIX: 2 copies require -50% distance for seamless loop */
+@keyframes scrollInfinite {
   0% {
     transform: translateX(0);
   }
   100% {
+    /* Move left by 50% since we have 2 copies (100% / 2 = 50%) */
     transform: translateX(-50%);
   }
+}
+
+/* Pause on hover */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 /* Icon container */
@@ -65,18 +55,24 @@
   flex-direction: column;
   align-items: center;
   min-width: 120px;
-  color: #fff; /* default text color */
-  flex-shrink: 0; /* Prevent items from shrinking */
+  color: #fff;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
 }
 
 /* Make icons bigger */
 .tech-icon {
-  font-size: 6rem; /* larger icons */
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 6rem;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .tech-icon:hover {
-  transform: scale(1.25);
+  transform: scale(1.2);
 }
 
 /* Icon names */
@@ -85,32 +81,66 @@
   font-size: 1rem;
   font-weight: 500;
   color: #fff;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.angular { color: #dd1b16; }
-.vue { color: #41b883; }
-.redux { color: #764abc; }
-.graphql { color: #e535ab; }
-.django { color: #092e20; }
-.flutter { color: #02569b; }
-.kubernetes { color: #326ce5; }
-.jenkins { color: #d33833; }
-.git { color: #f1502f; }
-.linux { color: #000; }
-.tensorflow { color: #ff6f00; }
-.pytorch { color: #ee4c2c; }
-.keras { color: #d00000; }
-.opencv { color: #5c3ee8; }
-.ai { color: #6f42c1; }
-.robot { color: #6c757d; }
-.solidity { color: #363636; }
-.cube { color: #20c997; }
+/* Icon colors */
+.tech-icon.html5 { color: #e34c26; }
+.tech-icon.css3 { color: #264de4; }
+.tech-icon.javascript { color: #f7df1e; }
+.tech-icon.react { color: #61dafb; }
+.tech-icon.angular { color: #dd1b16; }
+.tech-icon.vuejs { color: #41b883; }
+.tech-icon.redux { color: #764abc; }
+.tech-icon.graphql { color: #e535ab; }
+.tech-icon.nodejs { color: #68a063; }
+.tech-icon.python { color: #3776ab; }
+.tech-icon.django { color: #092e20; }
+.tech-icon.flutter { color: #02569b; }
+.tech-icon.java { color: #007396; }
+.tech-icon.php { color: #777bb4; }
+.tech-icon.mysql { color: #4479a1; }
+.tech-icon.mongodb { color: #47a248; }
+.tech-icon.docker { color: #2496ed; }
+.tech-icon.kubernetes { color: #326ce5; }
+.tech-icon.jenkins { color: #d33833; }
+.tech-icon.aws { color: #ff9900; }
+.tech-icon.googlecloud { color: #4285f4; }
+.tech-icon.cloud { color: #00acc1; }
+.tech-icon.git { color: #f1502f; }
+.tech-icon.linux { color: #fcc624; }
+.tech-icon.tensorflow { color: #ff6f00; }
+.tech-icon.pytorch { color: #ee4c2c; }
+.tech-icon.keras { color: #d00000; }
+.tech-icon.opencv { color: #5c3ee8; }
+.tech-icon.figma { color: #f24e1e; }
+.tech-icon.ai { color: #6f42c1; }
+.tech-icon.robotics { color: #ff6b6b; }
+.tech-icon.solidity { color: #363636; }
+.tech-icon.blockchain { color: #20c997; }
 
-/* Container inside marquee to appear above particles */
+/* Container styling */
 .tech-marquee .container {
   position: relative;
   z-index: 1;
+}
+
+.tech-marquee .container h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tech-marquee .container p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.95;
 }
 
 /* Responsive adjustments */
@@ -118,8 +148,11 @@
   .tech-icon {
     font-size: 5rem;
   }
-  .marquee-content {
+  .marquee-track {
     gap: 60px;
+  }
+  .tech-item {
+    min-width: 100px;
   }
 }
 
@@ -127,11 +160,17 @@
   .tech-icon {
     font-size: 4rem;
   }
-  .marquee-content {
+  .marquee-track {
     gap: 50px;
   }
   .tech-item span {
     font-size: 0.9rem;
+  }
+  .tech-item {
+    min-width: 90px;
+  }
+  .tech-marquee .container h1 {
+    font-size: 2.5rem;
   }
 }
 
@@ -139,28 +178,40 @@
   .tech-icon {
     font-size: 3.5rem;
   }
-  .marquee-content {
+  .marquee-track {
     gap: 40px;
   }
   .tech-item span {
     font-size: 0.85rem;
   }
+  .tech-item {
+    min-width: 80px;
+  }
   .tech-marquee {
     padding: 3rem 0;
+  }
+  .tech-marquee .container h1 {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 576px) {
   .tech-icon {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
-  .marquee-content {
+  .marquee-track {
     gap: 30px;
   }
   .tech-item span {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
+  }
+  .tech-item {
+    min-width: 70px;
   }
   .tech-marquee {
     padding: 2rem 0;
+  }
+  .tech-marquee .container h1 {
+    font-size: 1.8rem;
   }
 }

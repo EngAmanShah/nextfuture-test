@@ -21,12 +21,13 @@ export default function HeroSection({ lang = "ar" }) {
       secondaryBtn1: "تواصل معنا",
     },
     en: {
-      heading1: "Launch into the future with Next Future",
-      headline1: "We put you at the heart of digital transformation with innovative, comprehensive tech solutions.",
-      big1: "We provide solutions designed to support your ambitions and meet your business needs, helping you adapt to rapid changes in the tech world.",
+      heading1: "Step into the future with Next Future",
+      headline1:
+        "We place you at the center of digital transformation with innovative and comprehensive tech solutions.",
+      big1: "We offer solutions designed to support your ambitions and fulfill your business needs, helping you adapt to rapid technological changes.",
       primaryBtn1: "Discover Our Services",
       secondaryBtn1: "Contact Us",
-    }
+    },
   };
 
   const currentContent = content[lang] || content.ar;
@@ -104,7 +105,7 @@ export default function HeroSection({ lang = "ar" }) {
           min-height: 100vh;
           width: 100%;
           overflow: hidden;
-          background-image: url('/new-bg.jpg');
+          background-image: url("/new-bg.jpg");
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
@@ -119,10 +120,11 @@ export default function HeroSection({ lang = "ar" }) {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, 
-            rgba(11, 36, 71, 0.85) 0%, 
-            rgba(11, 100, 150, 0.75) 40%, 
-            rgba(8, 80, 130, 0.7) 70%, 
+          background: linear-gradient(
+            135deg,
+            rgba(11, 36, 71, 0.85) 0%,
+            rgba(11, 100, 150, 0.75) 40%,
+            rgba(8, 80, 130, 0.7) 70%,
             rgba(0, 60, 110, 0.65) 100%
           );
         }
@@ -142,7 +144,7 @@ export default function HeroSection({ lang = "ar" }) {
           font-weight: 800;
           margin-bottom: 40px;
           line-height: 1.25;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .hero-headline {
@@ -151,7 +153,7 @@ export default function HeroSection({ lang = "ar" }) {
           font-weight: 600;
           margin-bottom: 40px;
           line-height: 1.6;
-          text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .hero-big {
@@ -161,7 +163,7 @@ export default function HeroSection({ lang = "ar" }) {
           line-height: 1.8;
           margin: 0 auto 55px;
           max-width: 850px;
-          text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
           opacity: 0.95;
         }
 

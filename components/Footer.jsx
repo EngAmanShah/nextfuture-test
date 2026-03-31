@@ -70,8 +70,9 @@ export default function Footer({ lang }) {
     visionText: "VISION AL",
   };
 
-  const t = resolvedLang === "ar" ? arabicText : englishText;
-  const isArabic = resolvedLang === "ar";
+  const effectiveLang = resolvedLang || "en";
+  const t = effectiveLang === "ar" ? arabicText : englishText;
+  const isArabic = effectiveLang === "ar";
 
   return (
     <>
@@ -142,6 +143,26 @@ export default function Footer({ lang }) {
           text-align: center;
           margin-left: auto;
           margin-right: auto;
+        }
+
+        .footer-section[dir="rtl"] .description {
+          text-align: right;
+        }
+
+        .footer-section[dir="rtl"] .copyright {
+          text-align: right;
+        }
+
+        .footer-section[dir="rtl"] .nav-links {
+          justify-content: flex-end;
+        }
+
+        .footer-section[dir="rtl"] .compliance-left {
+          justify-content: flex-start;
+        }
+
+        .footer-section[dir="rtl"] .compliance-right {
+          justify-content: flex-end;
         }
 
         /* Navigation Links - Centered */
@@ -344,7 +365,7 @@ export default function Footer({ lang }) {
         <div className="container">
           {/* Logo Section - Centered */}
           <div className="logo-section">
-            <Link href={`/${lang}`} className="logo-link">
+            <Link href={`/${effectiveLang}`} className="logo-link">
               <Image
                 src="/logo-white.png"
                 alt="Next Future Tech"
@@ -362,15 +383,15 @@ export default function Footer({ lang }) {
 
           {/* Navigation Links - Centered */}
           <div className="nav-links">
-            <Link href={`/${lang}`} className="nav-link">{t.links.home}</Link>
-            <Link href={`/${lang}/service`} className="nav-link">{t.links.services}</Link>
-            <Link href={`/${lang}/contact-us`} className="nav-link">{t.links.contact}</Link>
-            <Link href={`/${lang}/about-us`} className="nav-link">{t.links.about}</Link>
+            <Link href={`/${effectiveLang}`} className="nav-link">{t.links.home}</Link>
+            <Link href={`/${effectiveLang}/service`} className="nav-link">{t.links.services}</Link>
+            <Link href={`/${effectiveLang}/contact-us`} className="nav-link">{t.links.contact}</Link>
+            <Link href={`/${effectiveLang}/about-us`} className="nav-link">{t.links.about}</Link>
             {/*
               If terms/privacy pages exist, use these routes or set up pages under `app/[lang]/terms` and `app/[lang]/privacy`.
             */}
-            {/* <Link href={`/${lang}/terms`} className="nav-link">{t.links.terms}</Link>
-            <Link href={`/${lang}/privacy`} className="nav-link">{t.links.privacy}</Link>
+            {/* <Link href={`/${effectiveLang}/terms`} className="nav-link">{t.links.terms}</Link>
+            <Link href={`/${effectiveLang}/privacy`} className="nav-link">{t.links.privacy}</Link>
         */}
           </div>
 

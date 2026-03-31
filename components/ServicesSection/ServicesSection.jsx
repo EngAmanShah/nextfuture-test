@@ -10,6 +10,7 @@ export default function Page({ params }) {
   const { lang } = params || {};
   const currentLang = lang || "en";
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedService, setSelectedService] = useState(null);
   const sliderRef = useRef(null);
 
   const translations = {
@@ -214,30 +215,28 @@ export default function Page({ params }) {
           <div className="d-none d-md-block">
             <div className="services-grid">
               {t.services.slice(0, 6).map((service, index) => (
-                <Link
+                <div
                   key={index}
-                  href={`/${currentLang}${service.link}`}
                   className="svc-card"
                 >
                   <div className="svc-icon-wrap">
                     {service.icon}
                   </div>
                   <span className="svc-title">{service.title}</span>
-                </Link>
+                </div>
               ))}
             </div>
             <div className="services-grid-row2">
               {t.services.slice(6).map((service, index) => (
-                <Link
+                <div
                   key={index + 6}
-                  href={`/${currentLang}${service.link}`}
                   className="svc-card"
                 >
                   <div className="svc-icon-wrap">
                     {service.icon}
                   </div>
                   <span className="svc-title">{service.title}</span>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
@@ -246,16 +245,15 @@ export default function Page({ params }) {
           <div className="d-md-none">
             <div className="mobile-services-grid">
               {t.services.map((service, index) => (
-                <Link
+                <div
                   key={index}
-                  href={`/${currentLang}${service.link}`}
                   className="svc-card"
                 >
                   <div className="svc-icon-wrap">
                     {service.icon}
                   </div>
                   <span className="svc-title">{service.title}</span>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
@@ -300,14 +298,17 @@ export default function Page({ params }) {
           gap: 10px;
           text-decoration: none;
           box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-          cursor: pointer;
-          transition: all 0.3s ease;
+          cursor: default;
+          transition: none;
           min-height: 130px;
         }
 
-        .svc-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .svc-card-selected {
+          border-color: #0056b3;
+          background: rgba(255, 255, 255, 0.9);
+          color: #0d1f4c;
+          box-shadow: 0 12px 22px rgba(0,0,0,0.2);
+          transform: translateY(-1px);
         }
 
         .svc-card::before {

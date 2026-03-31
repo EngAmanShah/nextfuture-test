@@ -131,9 +131,9 @@ export default function HomeFAQ({ lang = "ar" }) {
         </div>
 
         <div className="faq-footer">
-          <Link href={`/${lang}/faq`} className="faq-more-btn">
+          {/* <Link href={`/${lang}/faq`} className="faq-more-btn">
             {lang === "ar" ? "عرض جميع الأسئلة" : "View All FAQs"}
-          </Link>
+          </Link> */}
         </div>
       </div>
 

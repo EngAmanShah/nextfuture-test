@@ -24,110 +24,93 @@ export default function WhyChooseUs({ lang = "ar" }) {
     ar: {
       title: "نقدم أكثر لك من مجرد خدمة تقنية",
       subtitle: "خطة متكاملة لتحقيق الأهداف وزيادة النمو",
-      description: "في نيكست فيوتش، نرسم لك خارطة طريق نحو الابتكار، مقدّمين حلولاً تقنية غير تقليدية تعزز رؤيتك. دعنا نكون شريكك في رحلة التحول الرقمي، حيث نحقق طموحاتك بأفكار جريئة وتقنيات رائدة. انضم إلينا لنصنع مستقبلًا مشرقًا سويًا!",
+      description:
+        "في نيكست فيوتش، نرسم لك خارطة طريق نحو الابتكار، مقدّمين حلولاً تقنية غير تقليدية تعزز رؤيتك. دعنا نكون شريكك في رحلة التحول الرقمي، حيث نحقق طموحاتك بأفكار جريئة وتقنيات رائدة. انضم إلينا لنصنع مستقبلًا مشرقًا سويًا!",
       features: [
-
-      
         {
           icon: "/services/erp.png",
           title: "أنظمة تخطيط موارد المؤسسة",
-          items: [
-            "تحسين العمليات وزيادة الكفاءة في جميع الأقسام",
-            "ERP"
-          ]
+          items: ["تحسين العمليات وزيادة الكفاءة في جميع الأقسام", "ERP"],
         },
-            {
+        {
           icon: "/services/uim_apps.png",
           title: "تطوير وتصميم التطبيقات",
-          items: [
-            "حلول مبتكرة وتجربة مستخدم ممتازة لكل التطبيقات",
-            "ERP"
-          ]
+          items: ["حلول مبتكرة وتجربة مستخدم ممتازة لكل التطبيقات", "ERP"],
         },
-      
+
         {
           icon: "/services/grommet-icons_technology.png",
           title: "خدمات تقنية أخرى",
           items: [
             "حلول شاملة لكل ما تبحث عنه في التقنية والتكنولوجيا الحديثة",
-            "ERP"
-          ]
+            "ERP",
+          ],
         },
         {
           icon: "/services/Vector2.png",
           title: "خدمات التسويق",
-          items: [
-            "استراتيجيات فعالة لتحسين الوعي وزيادة النتائج",
-            "ERP"
-          ]
-        }
+          items: ["استراتيجيات فعالة لتحسين الوعي وزيادة النتائج", "ERP"],
+        },
       ],
-      cta: "اكشف خدماتنا"
+      cta: "اكشف خدماتنا",
     },
     en: {
-      title: "We Offer More Than Just Technical Service",
-      subtitle: "Integrated Plan to Achieve Goals and Increase Growth",
-      description: "At Next Future, we draw you a roadmap towards innovation, providing unconventional technical solutions that enhance your vision. Let us be your partner in the digital transformation journey, where we achieve your ambitions with bold ideas and pioneering technologies. Join us to create a bright future together!",
+      title: "We Offer More Than Just As Technical Services",
+      subtitle: "A Comprehensive Plan to Achieve Goals and Drive Growth",
+      description:
+        "At Next Future, we create a roadmap to innovation, providing technical solutions that enhance your vision. Let us be your partner in the digital transformation journey, achieving your ambitions with bold ideas and cutting-edge technologies. Join us and shape a bright future together!",
       features: [
         {
-          icon: "/services/uim_apps.png",
+          icon: "/services/erp.png",
           title: "Enterprise Resource Planning Systems",
           items: [
-            "Improve operations and increase efficiency across all departments",
-            "ERP"
-          ]
+            "Enhance operations and boost efficiency across all departments",
+            "ERP",
+          ],
         },
         {
           icon: "/services/uim_apps.png",
           title: "Application Development & Design",
           items: [
-            "Innovative solutions and excellent user experience for all applications",
-            "ERP"
-          ]
+            "Innovative solutions with exceptional user experience for all applications",
+          ],
         },
         {
           icon: "/services/grommet-icons_technology.png",
           title: "Other Technical Services",
-          items: [
-            "Comprehensive solutions for everything you seek in technology and modern tech",
-            "ERP"
-          ]
+          items: ["Comprehensive solutions for all your technology needs"],
         },
         {
           icon: "/services/Vector2.png",
           title: "Marketing Services",
           items: [
-            "Effective strategies to improve awareness and increase results",
-            "ERP"
-          ]
-        }
+            "Effective strategies to increase awareness and drive results",
+          ],
+        },
       ],
-      cta: "Discover Our Services"
-    }
+      cta: "Discover Our Services",
+    },
   };
 
   const currentContent = content[lang] || content.ar;
 
   return (
-    <section 
+    <section
       className={`why-choose-us ${fontClass}`}
       dir={isRTL ? "rtl" : "ltr"}
     >
-
       <div className="container">
-            <h1 className="main-title">{currentContent.title}</h1>
+        <h1 className="main-title">{currentContent.title}</h1>
 
         <div className="content-wrapper">
-
           {/* Left Side - Text Content with 4 cards */}
-          <motion.div 
+          <motion.div
             className="text-content"
             initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-
             <h2 className="sub-title">{currentContent.subtitle}</h2>
             <p className="description">{currentContent.description}</p>
 
@@ -137,7 +120,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
             {/* Features Grid - 2 columns, 4 cards */}
             <div className="features-grid">
               {currentContent.features.map((feature, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   className="feature-card"
                   initial={{ opacity: 0, y: 20 }}
@@ -157,7 +140,9 @@ export default function WhyChooseUs({ lang = "ar" }) {
                   </div>
                   <div className="card-content">
                     {feature.items.map((item, itemIdx) => (
-                      <p key={itemIdx} className="card-item">{item}</p>
+                      <p key={itemIdx} className="card-item">
+                        {item}
+                      </p>
                     ))}
                   </div>
                 </motion.div>
@@ -165,7 +150,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
             </div>
 
             {/* CTA Button */}
-            <motion.div 
+            <motion.div
               className="cta-container"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -183,7 +168,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
           </motion.div>
 
           {/* Right Side - Image */}
-          <motion.div 
+          <motion.div
             className="image-content"
             initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -202,17 +187,16 @@ export default function WhyChooseUs({ lang = "ar" }) {
               <div className="image-overlay"></div>
             </div>
           </motion.div>
-
         </div>
       </div>
 
       <style jsx>{`
         .why-choose-us {
-          background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
           padding: 100px 0;
           min-height: auto;
           display: flex;
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .container {
@@ -233,28 +217,26 @@ export default function WhyChooseUs({ lang = "ar" }) {
         /* Text Content Styles */
         .text-content {
           max-width: 650px;
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .main-title {
           font-size: 42px;
           font-weight: 800;
           text-align: center !important;
-          color: #005BAC;
+          color: #005bac;
           margin-bottom: 15px;
           line-height: 1.3;
           grid-column: 1 / -1;
-         text-align: ${isRTL ? 'right' : 'left'};
-
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .sub-title {
           font-size: 24px;
           font-weight: 600;
-          color: #1E1E1E99;
+          color: #1e1e1e99;
           margin-bottom: 20px;
-          text-align: ${isRTL ? 'right' : 'left'};
-
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .description {
@@ -262,15 +244,14 @@ export default function WhyChooseUs({ lang = "ar" }) {
           color: #475569;
           line-height: 1.8;
           margin-bottom: 30px;
-                    text-align: ${isRTL ? 'right' : 'left'};
-
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         /* Separator */
         .separator {
           width: 100px;
           height: 3px;
-          background: #2563EB;
+          background: #2563eb;
           margin: 25px 0 35px;
           border-radius: 2px;
         }
@@ -288,26 +269,26 @@ export default function WhyChooseUs({ lang = "ar" }) {
           border-radius: 20px;
           padding: 20px;
           box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-          border: 1px solid #E2E8F0;
+          border: 1px solid #e2e8f0;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .feature-card:hover {
           transform: translateY(-5px);
           box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
-          border-color: #2563EB;
+          border-color: #2563eb;
         }
 
         .card-header {
           display: flex;
-          flex-direction: ${isRTL ? 'row-reverse' : 'row'};
-          justify-content: ${isRTL ? 'flex-start' : 'flex-start'};
+          flex-direction: ${isRTL ? "row-reverse" : "row"};
+          justify-content: ${isRTL ? "flex-start" : "flex-start"};
           align-items: center;
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
           gap: 12px;
           margin-bottom: 15px;
-          border-bottom: 2px solid #2563EB;
+          border-bottom: 2px solid #2563eb;
           padding-bottom: 12px;
         }
 
@@ -335,16 +316,16 @@ export default function WhyChooseUs({ lang = "ar" }) {
         .card-title {
           font-size: 16px;
           font-weight: 700;
-          color: #1E293B;
+          color: #1e293b;
           margin: 0;
           line-height: 1.4;
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .card-content {
-          text-align: ${isRTL ? 'right' : 'left'};
-          padding-inline-start: ${isRTL ? '0' : '5px'};
-          padding-inline-end: ${isRTL ? '5px' : '0'};
+          text-align: ${isRTL ? "right" : "left"};
+          padding-inline-start: ${isRTL ? "0" : "5px"};
+          padding-inline-end: ${isRTL ? "5px" : "0"};
         }
 
         .card-item {
@@ -352,10 +333,10 @@ export default function WhyChooseUs({ lang = "ar" }) {
           color: #475569;
           margin-bottom: 8px;
           line-height: 1.5;
-          padding-inline-start: ${isRTL ? '0' : '18px'};
-          padding-inline-end: ${isRTL ? '18px' : '0'};
+          padding-inline-start: ${isRTL ? "0" : "18px"};
+          padding-inline-end: ${isRTL ? "18px" : "0"};
           position: relative;
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .card-item:last-child {
@@ -364,10 +345,10 @@ export default function WhyChooseUs({ lang = "ar" }) {
 
         .card-item::before {
           content: "•";
-          color: #2563EB;
+          color: #2563eb;
           font-weight: bold;
           position: absolute;
-          ${isRTL ? 'right' : 'left'}: 0;
+          ${isRTL ? "right" : "left"}: 0;
           font-size: 16px;
           top: 50%;
           transform: translateY(-50%);
@@ -379,7 +360,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
           align-items: center;
           justify-content: center;
           width: 220px;
-      
+
           min-height: 50px;
           background: linear-gradient(135deg, #0079e3, #005eb8) !important;
           color: #ffffff;
@@ -410,7 +391,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
         .image-content {
           display: flex;
           justify-content: flex-end;
-          text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? "right" : "left"};
         }
 
         .image-wrapper {
@@ -439,7 +420,11 @@ export default function WhyChooseUs({ lang = "ar" }) {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent);
+          background: linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.1),
+            transparent
+          );
           pointer-events: none;
         }
 
@@ -451,7 +436,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
             max-width: 1400px;
             padding: 0 50px;
           }
-          
+
           .features-grid {
             gap: 25px;
           }
@@ -1007,7 +992,7 @@ export default function WhyChooseUs({ lang = "ar" }) {
         /* High Contrast Mode */
         @media (prefers-contrast: high) {
           .feature-card {
-            border: 2px solid #2563EB;
+            border: 2px solid #2563eb;
           }
 
           .card-title {

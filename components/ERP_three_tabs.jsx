@@ -451,7 +451,7 @@ export default function ERPPage({ lang = "ar" }) {
 
             {/* Contact CTA */}
             <div className="contact-cta">
-              <a href="/contact" className="btn-contact">
+              <a href="/contact-us" className="btn-contact">
                 {ui.contactCta}
               </a>
             </div>
