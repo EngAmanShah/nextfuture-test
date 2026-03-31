@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Cairo, Inter } from "next/font/google";
 import Image from "next/image";
@@ -14,6 +15,7 @@ const inter = Inter({
 });
 
 export default function WhyChooseUs({ lang = "ar" }) {
+  const router = useRouter();
   const isRTL = lang === "ar";
   const fontClass = lang === "ar" ? cairo.className : inter.className;
 
@@ -25,19 +27,20 @@ export default function WhyChooseUs({ lang = "ar" }) {
       description: "في نيكست فيوتش، نرسم لك خارطة طريق نحو الابتكار، مقدّمين حلولاً تقنية غير تقليدية تعزز رؤيتك. دعنا نكون شريكك في رحلة التحول الرقمي، حيث نحقق طموحاتك بأفكار جريئة وتقنيات رائدة. انضم إلينا لنصنع مستقبلًا مشرقًا سويًا!",
       features: [
 
-          {
-          icon: "/services/uim_apps.png",
-          title: "تطوير وتصميم التطبيقات",
-          items: [
-            "حلول مبتكرة وتجربة مستخدم ممتازة لكل التطبيقات",
-            "ERP"
-          ]
-        },
+      
         {
           icon: "/services/erp.png",
           title: "أنظمة تخطيط موارد المؤسسة",
           items: [
             "تحسين العمليات وزيادة الكفاءة في جميع الأقسام",
+            "ERP"
+          ]
+        },
+            {
+          icon: "/services/uim_apps.png",
+          title: "تطوير وتصميم التطبيقات",
+          items: [
+            "حلول مبتكرة وتجربة مستخدم ممتازة لكل التطبيقات",
             "ERP"
           ]
         },
@@ -144,11 +147,9 @@ export default function WhyChooseUs({ lang = "ar" }) {
                 >
                   <div className="card-header">
                     <div className="icon-wrapper">
-                      <Image
+                      <img
                         src={feature.icon}
                         alt={feature.title}
-                        width={35}
-                        height={35}
                         className="feature-icon"
                       />
                     </div>
@@ -171,7 +172,11 @@ export default function WhyChooseUs({ lang = "ar" }) {
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <button className="cta-button">
+              <button
+                type="button"
+                className="cta-button"
+                onClick={() => router.push(`/${lang}/service`)}
+              >
                 {currentContent.cta}
               </button>
             </motion.div>
@@ -234,21 +239,21 @@ export default function WhyChooseUs({ lang = "ar" }) {
         .main-title {
           font-size: 42px;
           font-weight: 800;
-          text-align: center;
-          color: #1E293B;
+          text-align: center !important;
+          color: #005BAC;
           margin-bottom: 15px;
           line-height: 1.3;
           grid-column: 1 / -1;
-                    text-align: ${isRTL ? 'right' : 'left'};
+         text-align: ${isRTL ? 'right' : 'left'};
 
         }
 
         .sub-title {
           font-size: 24px;
           font-weight: 600;
-          color: #2563EB;
+          color: #1E1E1E99;
           margin-bottom: 20px;
-                    text-align: ${isRTL ? 'right' : 'left'};
+          text-align: ${isRTL ? 'right' : 'left'};
 
         }
 
@@ -307,8 +312,10 @@ export default function WhyChooseUs({ lang = "ar" }) {
         }
 
         .icon-wrapper {
-          width: 35px;
-          height: 35px;
+          width: auto;
+          height: auto;
+          max-width: 110px;
+          max-height: 110px;
           flex-shrink: 0;
           border-radius: 12px;
           display: flex;
@@ -318,8 +325,10 @@ export default function WhyChooseUs({ lang = "ar" }) {
         }
 
         .feature-icon {
-          width: 100%;
-          height: 100%;
+          width: auto;
+          height: auto;
+          max-width: 100%;
+          max-height: 100%;
           object-fit: contain;
         }
 
@@ -366,22 +375,35 @@ export default function WhyChooseUs({ lang = "ar" }) {
 
         /* CTA Button */
         .cta-button {
-          background: #2563EB;
-          color: white;
-          border: none;
-          padding: 16px 45px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 220px;
+      
+          min-height: 50px;
+          background: linear-gradient(135deg, #0079e3, #005eb8) !important;
+          color: #ffffff;
+          border: 2px solid #ffffff;
+          padding: 0 24px;
           font-size: 18px;
-          font-weight: 600;
-          border-radius: 50px;
+          font-weight: 700;
+          border-radius: 14px;
           cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+          text-decoration: none;
+          text-align: center;
+          transition: all 0.25s ease;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
         }
 
         .cta-button:hover {
-          background: #1D4ED8;
-          transform: scale(1.05);
-          box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+          background: linear-gradient(135deg, #0093ff, #0a72c3);
+          transform: translateY(-2px);
+          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-button:active {
+          transform: translateY(0);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* Image Styles */

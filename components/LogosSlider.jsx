@@ -10,15 +10,15 @@ export default function LogosSlider({ lang = "ar" }) {
   const isRTL = lang === "ar";
 
   const logos = [
-    { src: "/services-slider/img.jpg", alt: "Client 1" },
-    { src: "/services-slider/img.jpg", alt: "Client 2" },
-    { src: "/services-slider/img.jpg", alt: "Client 3" },
-    { src: "/services-slider/img.jpg", alt: "Client 4" },
-    { src: "/services-slider/img.jpg", alt: "Client 5" },
-    { src: "/services-slider/img.jpg", alt: "Client 6" },
+    { src: "/work/logo5.png", alt: "Client 1" },
+    { src: "/work/logo1.png", alt: "Client 2" },
+    { src: "/work/logo2.png", alt: "Client 3" },
+    { src: "/work/logo3.png", alt: "Client 4" },
+    { src: "/work/logo4.png", alt: "Client 5" },
+    { src: "/work/logo5.png", alt: "Client 6" },
     // Add duplicate logos for better loop effect if needed
-    { src: "/services-slider/img.jpg", alt: "Client 7" },
-    { src: "/services-slider/img.jpg", alt: "Client 8" },
+    { src: "/work/logo3.png", alt: "Client 3" },
+    { src: "/work/logo4.png", alt: "Client 4" },
   ];
 
   const content = {
@@ -45,6 +45,7 @@ export default function LogosSlider({ lang = "ar" }) {
           {t.headingStart}
           <span className="heading-highlight">{t.headingHighlight}</span>
           {t.headingEnd}
+
         </h2>
         <p className="logos-subtitle">{t.subtitle}</p>
       </div>
@@ -134,7 +135,8 @@ export default function LogosSlider({ lang = "ar" }) {
         }
 
         .heading-highlight {
-          color: #d4a017;
+         font-weight: 800;
+          color: #005BAC;
         }
 
         .logos-subtitle {

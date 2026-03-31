@@ -32,6 +32,7 @@ import {
   SiJenkins,
   SiFlutter,
   SiDjango,
+  SiFigma,
 } from "react-icons/si";
 import { GiArtificialIntelligence, GiCube } from "react-icons/gi";
 import "./Skills.css";
@@ -72,6 +73,7 @@ export default function TechMarquee({ lang = "en" }) {
         PyTorch: "PyTorch",
         Keras: "Keras",
         OpenCV: "OpenCV",
+        Figma: "Figma",
         AI: "AI",
         Robotics: "Robotics",
         Solidity: "Solidity",
@@ -111,6 +113,7 @@ export default function TechMarquee({ lang = "en" }) {
         PyTorch: "باي تورش",
         Keras: "كيراس",
         OpenCV: "أوبن سي في",
+        Figma: "فيجما",
         AI: "الذكاء الاصطناعي",
         Robotics: "الروبوتات",
         Solidity: "سوليديتي",
@@ -121,53 +124,58 @@ export default function TechMarquee({ lang = "en" }) {
 
   const t = translations[lang] ?? translations.en;
 
-  // Tech rows
-  const techRows = [
-    [
-      { icon: FaHtml5, name: "HTML5" },
-      { icon: FaCss3Alt, name: "CSS3" },
-      { icon: FaJs, name: "JavaScript" },
-      { icon: FaReact, name: "React" },
-      { icon: FaAngular, name: "Angular" },
-      { icon: FaVuejs, name: "Vue.js" },
-      { icon: SiRedux, name: "Redux" },
-      { icon: SiGraphql, name: "GraphQL" },
-      { icon: FaNodeJs, name: "Node.js" },
-      { icon: FaPython, name: "Python" },
-      { icon: SiDjango, name: "Django" },
-      { icon: SiFlutter, name: "Flutter" },
-    ],
-    [
-      { icon: FaJava, name: "Java" },
-      { icon: FaPhp, name: "PHP" },
-      { icon: SiMysql, name: "MySQL" },
-      { icon: SiMongodb, name: "MongoDB" },
-      { icon: SiDocker, name: "Docker" },
-      { icon: SiKubernetes, name: "Kubernetes" },
-      { icon: SiJenkins, name: "Jenkins" },
-      { icon: FaAws, name: "AWS" },
-      { icon: SiGooglecloud, name: "Google Cloud" },
-      { icon: FaCloud, name: "Cloud" },
-      { icon: FaGitAlt, name: "Git" },
-      { icon: FaLinux, name: "Linux" },
-    ],
-    [
-      { icon: SiTensorflow, name: "TensorFlow" },
-      { icon: SiPytorch, name: "PyTorch" },
-      { icon: SiKeras, name: "Keras" },
-      { icon: SiOpencv, name: "OpenCV" },
-      { icon: GiArtificialIntelligence, name: "AI" },
-      { icon: FaRobot, name: "Robotics" },
-      { icon: SiSolidity, name: "Solidity" },
-      { icon: GiCube, name: "Blockchain" },
-    ],
+  // Tech items array
+  const techItems = [
+    { icon: FaHtml5, name: "HTML5" },
+    { icon: FaCss3Alt, name: "CSS3" },
+    { icon: FaJs, name: "JavaScript" },
+    { icon: FaReact, name: "React" },
+    { icon: FaAngular, name: "Angular" },
+    { icon: FaVuejs, name: "Vue.js" },
+    { icon: SiRedux, name: "Redux" },
+    { icon: SiGraphql, name: "GraphQL" },
+    { icon: FaNodeJs, name: "Node.js" },
+    { icon: FaPython, name: "Python" },
+    { icon: SiDjango, name: "Django" },
+    { icon: SiFlutter, name: "Flutter" },
+    { icon: FaJava, name: "Java" },
+    { icon: FaPhp, name: "PHP" },
+    { icon: SiMysql, name: "MySQL" },
+    { icon: SiMongodb, name: "MongoDB" },
+    { icon: SiDocker, name: "Docker" },
+    { icon: SiKubernetes, name: "Kubernetes" },
+    { icon: SiJenkins, name: "Jenkins" },
+    { icon: FaAws, name: "AWS" },
+    { icon: SiGooglecloud, name: "Google Cloud" },
+    { icon: FaCloud, name: "Cloud" },
+    { icon: FaGitAlt, name: "Git" },
+    { icon: FaLinux, name: "Linux" },
+    { icon: SiTensorflow, name: "TensorFlow" },
+    { icon: SiPytorch, name: "PyTorch" },
+    { icon: SiKeras, name: "Keras" },
+    { icon: SiOpencv, name: "OpenCV" },
+    { icon: SiFigma, name: "Figma" },
+    { icon: GiArtificialIntelligence, name: "AI" },
+    { icon: FaRobot, name: "Robotics" },
+    { icon: SiSolidity, name: "Solidity" },
+    { icon: GiCube, name: "Blockchain" },
   ];
+
+  const renderItems = (keyPrefix) =>
+    techItems.map((tech, index) => {
+      const Icon = tech.icon;
+      return (
+        <div key={`${keyPrefix}-${index}`} className="tech-item">
+          <Icon className={`tech-icon ${tech.name.toLowerCase()}`} />
+          <span>{t.techNames[tech.name]}</span>
+        </div>
+      );
+    });
 
   return (
     <section
       className={`tech-marquee-wrapper ${lang === "ar" ? "text-end" : "text-start"}`}
       dir={lang === "ar" ? "rtl" : "ltr"}
-      style={{ backgroundColor: "#" }}
     >
       <div className="tech-marquee">
         <div className="container text-center py-4 px-3">
@@ -175,24 +183,12 @@ export default function TechMarquee({ lang = "en" }) {
           <p className="text-white text-wrap">{t.description}</p>
         </div>
 
-        {techRows.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className={`marquee ${rowIndex % 2 === 0 ? "marquee-left" : "marquee-right"} mt-4`}
-          >
-            <div className="marquee-content">
-              {row.map((tech, i) => {
-                const Icon = tech.icon;
-                return (
-                  <div key={i} className="tech-item">
-                    <Icon className={`tech-icon ${tech.name.toLowerCase()}`} />
-                    <span>{t.techNames[tech.name]}</span>
-                  </div>
-                );
-              })}
-            </div>
+        <div className="marquee marquee-left mt-4">
+          <div className="marquee-content">
+            {renderItems("main")}
+            {renderItems("clone")}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

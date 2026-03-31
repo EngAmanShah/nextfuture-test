@@ -11,8 +11,10 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 
-export default function Footer({ lang = "ar" }) {
+export default function Footer({ lang }) {
   const pathname = usePathname();
+  const pathLang = pathname?.split("/")?.[1];
+  const resolvedLang = pathLang === "ar" || pathLang === "en" ? pathLang : (lang || "en");
   const [currentDate, setCurrentDate] = useState(null);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function Footer({ lang = "ar" }) {
   }, []);
 
   // Hide footer on admin pages only
-  if (pathname?.startsWith(`/${lang}/admin`)) {
+  if (pathname?.startsWith(`/${resolvedLang}/admin`)) {
     return null;
   }
 
@@ -68,8 +70,8 @@ export default function Footer({ lang = "ar" }) {
     visionText: "VISION AL",
   };
 
-  const t = lang === "ar" ? arabicText : englishText;
-  const isArabic = lang === "ar";
+  const t = resolvedLang === "ar" ? arabicText : englishText;
+  const isArabic = resolvedLang === "ar";
 
   return (
     <>
@@ -361,11 +363,15 @@ export default function Footer({ lang = "ar" }) {
           {/* Navigation Links - Centered */}
           <div className="nav-links">
             <Link href={`/${lang}`} className="nav-link">{t.links.home}</Link>
-            <Link href={`/${lang}/services`} className="nav-link">{t.links.services}</Link>
+            <Link href={`/${lang}/service`} className="nav-link">{t.links.services}</Link>
             <Link href={`/${lang}/contact-us`} className="nav-link">{t.links.contact}</Link>
             <Link href={`/${lang}/about-us`} className="nav-link">{t.links.about}</Link>
-            <Link href={`/${lang}/terms`} className="nav-link">{t.links.terms}</Link>
+            {/*
+              If terms/privacy pages exist, use these routes or set up pages under `app/[lang]/terms` and `app/[lang]/privacy`.
+            */}
+            {/* <Link href={`/${lang}/terms`} className="nav-link">{t.links.terms}</Link>
             <Link href={`/${lang}/privacy`} className="nav-link">{t.links.privacy}</Link>
+        */}
           </div>
 
           {/* Read and Vision Section - Centered with Compliance on sides */}

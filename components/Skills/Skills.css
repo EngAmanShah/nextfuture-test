@@ -5,6 +5,7 @@
   overflow: hidden;
   background: #379DD7; /* dark blue background */
 }
+
 /* Particle canvas behind everything */
 .tech-particles {
   position: absolute;
@@ -15,6 +16,7 @@
   z-index: 0;
   pointer-events: none; /* so canvas doesn't block interactions */
 }
+
 /* Marquee base content */
 .tech-marquee {
   position: relative;
@@ -26,29 +28,37 @@
   background: transparent; /* transparent for particles to show through */
   color: #000000;
 }
+
 /* Marquee content container */
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
 .marquee-content {
   display: inline-flex;
   gap: 80px; /* spacing between items */
   font-size: 1rem; /* reset text size for icons */
+  width: max-content; /* Ensures content takes full width */
+  will-change: transform;
 }
-/* Left scrolling */
+
+/* Two synchronized strips for uninterrupted scrolling */
 .marquee-left .marquee-content {
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 60s linear infinite;
 }
-/* Right scrolling */
-.marquee-right .marquee-content {
-  animation: scroll-right 20s linear infinite;
-}
-/* Scroll animations */
+
+/* Scroll animation - scroll by 50% to create seamless loop */
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
-@keyframes scroll-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
+
 /* Icon container */
 .tech-item {
   display: flex;
@@ -56,43 +66,45 @@
   align-items: center;
   min-width: 120px;
   color: #fff; /* default text color */
+  flex-shrink: 0; /* Prevent items from shrinking */
 }
+
 /* Make icons bigger */
 .tech-icon {
   font-size: 6rem; /* larger icons */
   transition: transform 0.3s ease, color 0.3s ease;
 }
+
 .tech-icon:hover {
   transform: scale(1.25);
 }
+
 /* Icon names */
 .tech-item span {
   margin-top: 10px;
   font-size: 1rem;
   font-weight: 500;
   color: #fff;
+  white-space: nowrap; /* Prevent text wrapping */
 }
+
 .angular { color: #dd1b16; }
 .vue { color: #41b883; }
 .redux { color: #764abc; }
 .graphql { color: #e535ab; }
 .django { color: #092e20; }
 .flutter { color: #02569b; }
-
 .kubernetes { color: #326ce5; }
 .jenkins { color: #d33833; }
 .git { color: #f1502f; }
 .linux { color: #000; }
-
 .tensorflow { color: #ff6f00; }
 .pytorch { color: #ee4c2c; }
 .keras { color: #d00000; }
 .opencv { color: #5c3ee8; }
-
 .ai { color: #6f42c1; }
 .robot { color: #6c757d; }
 .solidity { color: #363636; }
-.vr { color: #17a2b8; }
 .cube { color: #20c997; }
 
 /* Container inside marquee to appear above particles */
@@ -100,6 +112,7 @@
   position: relative;
   z-index: 1;
 }
+
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .tech-icon {
@@ -151,5 +164,3 @@
     padding: 2rem 0;
   }
 }
-
-

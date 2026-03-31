@@ -9,6 +9,7 @@ import ContextProvider from "@/providers/ContextProvider";
 import LayoutWrapper from "./[lang]/LayoutWrapper";
 import BackToTopButton from "@/components/BackToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   metadataBase: new URL("https://www.nextfuture-it.com"),
@@ -137,13 +138,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
 
         <ContextProvider>
-          <LayoutWrapper lang="en">
+          <LayoutWrapper>
             <ToastContainer position="top-center" autoClose={3000} />
             <main className="d-flex flex-column flex-grow-1" style={{ minHeight: "100vh" }}>
               {children}
             </main>
             <BackToTopButton />
-            <WhatsAppButton lang="en" />
+            <WhatsAppButton />
+            <Footer />
           </LayoutWrapper>
         </ContextProvider>
       </body>

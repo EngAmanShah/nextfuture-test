@@ -29,7 +29,7 @@ export default async function Home({ params }) {
       shopNow: "Discover Our Services",
       whyChooseTitle: "Why Partner with Next Future Information",
       whyChooseDescription:
-        "We deliver impactful solutions across industries, helping businesses grow sustainably and gain global recognition.",
+        "We understand your needs and deliver innovative solutions",
     },
     ar: {
       headingTitle: "انطلق نحو المستقبل مع نكست فيوتشر",
@@ -41,7 +41,7 @@ export default async function Home({ params }) {
       shopNow: "اكتشف خدماتنا",
       whyChooseTitle: "لماذا تختار نكست فيوتشر",
       whyChooseDescription:
-        "نقدّم حلولاً مبتكرة عبر مختلف الصناعات، لمساعدة الشركات على تحقيق نمو مستدام وبناء سمعة قوية على المستوى العالمي.",
+        "نتفهم احتياجاتك ونقدم حلولاً مبتكرة",
     },
   };
 
@@ -57,11 +57,16 @@ export default async function Home({ params }) {
 
   return (
     <>
+
       <Hero lang={lang} />
 
       <Offer lang={lang} />
 
-        <Features lang={lang} />
+        <Features
+          lang={lang}
+          title={whyChooseTitle}
+          subtitle={whyChooseDescription}
+        />
      <ERP lang={lang} />
      
     <ZakatAuthoritySection lang={lang} />

@@ -534,30 +534,7 @@ export default function ContactUsClient({ lang }) {
       {/* ═══════════════════════════════════════════
           WHATSAPP FAB
       ════════════════════════════════════════════ */}
-      <a
-        href="https://wa.me/966539983393"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        style={{
-          position: "fixed",
-          bottom: "1.5rem",
-          ...(isArabic ? { right: "1.5rem" } : { left: "1.5rem" }),
-          width: "52px",
-          height: "52px",
-          background: "#25d366",
-          color: "#fff",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 4px 14px rgba(37,211,102,0.45)",
-          textDecoration: "none",
-          zIndex: 999,
-        }}
-      >
-        <FaWhatsapp size={26} />
-      </a>
+     
     </div>
   );
 }

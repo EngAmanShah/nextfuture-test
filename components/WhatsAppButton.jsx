@@ -1,9 +1,13 @@
 "use client";
 import { FaWhatsapp } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
-const WhatsAppButton = ({ lang = "en" }) => {
+const WhatsAppButton = ({ lang }) => {
+  const pathname = usePathname();
+  const pathLang = pathname?.split("/")?.[1];
+  const resolvedLang = pathLang === "ar" || pathLang === "en" ? pathLang : (lang || "en");
   const phoneNumber = "+966539983393"; 
-  const message = lang === "ar" 
+  const message = resolvedLang === "ar" 
     ? "مرحبا، أريد الاستفسار عن خدماتكم" 
     : "Hello, I would like to inquire about your services";
 

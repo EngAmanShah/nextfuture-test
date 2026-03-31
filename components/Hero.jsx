@@ -85,13 +85,13 @@ export default function HeroSection({ lang = "ar" }) {
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         >
           <Link href={`/${lang}/service`}>
-            <button className="btn-primary">
+            <button className="hero-btn-primary">
               {currentContent.primaryBtn1}
             </button>
           </Link>
 
           <Link href={`/${lang}/contact-us`}>
-            <button className="btn-secondary">
+            <button className="hero-btn-outline">
               {currentContent.secondaryBtn1}
             </button>
           </Link>
@@ -184,50 +184,51 @@ export default function HeroSection({ lang = "ar" }) {
           margin-top: 0px;
         }
 
-        .btn-primary {
-            height: 60px;
+        .hero-btn-primary {
+          height: 60px;
           width: 300px !important;
           margin-inline-end: 20px;
           padding: 0 35px;
           font-size: 18px;
-          font-weight: 600;
-          background-color: transparent;
-          color: white;
-          border: 2px solid rgba(255, 255, 255, 0.8);
-          border-radius: 50px;
+          font-weight: 700;
+          color: #ffffff;
+          background: linear-gradient(135deg, #0e68dd 0%, #0a4eb9 100%);
+          border: none;
+          border-radius: 12px;
           cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-          letter-spacing: 1.5px;
+          transition: all 0.2s ease;
+          box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+          letter-spacing: 0.25px;
         }
 
-        .btn-primary:hover {
-          background-color: #2563eb;
-          transform: scale(1.05);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        .hero-btn-primary:hover {
+          background: linear-gradient(135deg, #2f88f3 0%, #1771c4 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
         }
 
-        .btn-secondary {
+        .hero-btn-outline {
           height: 60px;
           width: 300px !important;
           padding: 0 35px;
           font-size: 18px;
-          font-weight: 600;
-          background-color: transparent;
-          color: white;
-          border: 2px solid rgba(255, 255, 255, 0.8);
-          border-radius: 50px;
+          font-weight: 700;
+          color: #ffffff;
+          background-color: rgba(255, 255, 255, 0.16);
+          border: 2px solid rgba(255, 255, 255, 0.35);
+          border-radius: 12px;
           cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-          letter-spacing: 1.5px;
+          transition: all 0.2s ease;
+          box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+          letter-spacing: 0.25px;
+          backdrop-filter: blur(4px);
         }
 
-        .btn-secondary:hover {
-          background-color: rgba(255, 255, 255, 0.15);
-          transform: scale(1.05);
-          border-color: white;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        .hero-btn-outline:hover {
+          background-color: rgba(255, 255, 255, 0.26);
+          transform: translateY(-2px);
+          border-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28);
         }
 
         @media (max-width: 768px) {
@@ -266,22 +267,20 @@ export default function HeroSection({ lang = "ar" }) {
             gap: 15px;
             flex-direction: column;
             width: 100%;
-                      margin-top: 55px;
-
+            margin-top: 55px;
           }
 
-          .btn-primary,
-          .btn-secondary {
+          .hero-btn-primary,
+          .hero-btn-outline {
             height: 55px;
             min-width: 200px;
             font-size: 16px;
             padding: 0 30px;
             width: 100%;
-                      margin-top: 24px;
-
+            margin-top: 24px;
           }
 
-          .btn-primary {
+          .hero-btn-primary {
             margin-inline-end: 0;
           }
         }
@@ -319,8 +318,8 @@ export default function HeroSection({ lang = "ar" }) {
             width: 100%;
           }
 
-          .btn-primary,
-          .btn-secondary {
+          .hero-btn-primary,
+          .hero-btn-outline {
             height: 50px;
             min-width: 200px;
             font-size: 15px;
@@ -329,7 +328,7 @@ export default function HeroSection({ lang = "ar" }) {
             width: 100%;
           }
 
-          .btn-primary {
+          .hero-btn-primary {
             margin-inline-end: 0;
           }
         }

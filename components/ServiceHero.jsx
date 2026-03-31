@@ -15,16 +15,18 @@ export default function ServiceHero({ lang = "ar" }) {
   const content = {
     ar: {
       heading1: "تحول رقمي شامل مع نكست فيوتشر",
-      headline1: "حلول مبتكرة للتطوير، التصميم، والتسويق، وأنظمة إدارة العقارات والمقاولات",
-      primaryBtn: "اكشف الخدمات",
-      secondaryBtn: "تواصل معنا",
+      headline1:
+        "حلول مبتكرة للتطوير، التصميم، والتسويق، وأنظمة إدارة العقارات والمقاولات",
+      primaryBtn1: "اكشف الخدمات",
+      secondaryBtn1: "تواصل معنا",
     },
     en: {
       heading1: "Comprehensive Digital Transformation with Next Future",
-      headline1: "Innovative solutions for development, design, marketing, and real estate & contracting management systems",
-      primaryBtn: "Discover Services",
-      secondaryBtn: "Contact Us",
-    }
+      headline1:
+        "Innovative solutions for development, design, marketing, and real estate & contracting management systems",
+      primaryBtn1: "Discover Services",
+      secondaryBtn1: "Contact Us",
+    },
   };
 
   const currentContent = content[lang] || content.ar;
@@ -33,7 +35,7 @@ export default function ServiceHero({ lang = "ar" }) {
     <section className={`hero ${cairo.className}`} dir={isRTL ? "rtl" : "ltr"}>
       {/* Background Image */}
       <div className="hero-bg-image" />
-      
+
       {/* Gradient Overlay */}
       <div className="hero-gradient" />
 
@@ -60,20 +62,15 @@ export default function ServiceHero({ lang = "ar" }) {
         </motion.p>
 
         {/* Buttons */}
-        <motion.div
-          className="hero-buttons"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-        >
-          <Link href={`/${lang}/services`} className="btn-outline">
-            {currentContent.primaryBtn}
-          </Link>
+        <div className="hero-buttons">
+          <a href={`/${lang}/service`} className="hero-btn-outline1">
+            {currentContent.primaryBtn1}
+          </a>
 
-          <Link href={`/${lang}/contact`} className="btn-primary">
-            {currentContent.secondaryBtn}
-          </Link>
-        </motion.div>
+          <a href={`/${lang}/contact-us`} className="hero-btn-primary1">
+            {currentContent.secondaryBtn1}
+          </a>
+        </div>
       </div>
 
       <style jsx>{`
@@ -87,29 +84,26 @@ export default function ServiceHero({ lang = "ar" }) {
           justify-content: center;
         }
 
-        /* Background Image */
         .hero-bg-image {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url('/future2.png');
+          background-image: url("/future2.png");
           background-size: cover;
           filter: grayscale(100%) brightness(140.45%) contrast(100%);
-
           background-position: center;
           background-repeat: no-repeat;
         }
 
-        /* Gradient Overlay */
         .hero-gradient {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(180deg, #005BAC 0%, #02417A 100%);
+          background: linear-gradient(180deg, #005bac 0%, #02417a 100%);
           opacity: 0.75;
         }
 
@@ -152,66 +146,44 @@ export default function ServiceHero({ lang = "ar" }) {
           flex-wrap: wrap;
         }
 
-        .btn-outline,
-        .btn-primary {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 180px;
-          padding: 14px 36px;
+        .hero-btn-outline1,
+        .hero-btn-primary1 {
+          display: inline-block;
+          padding: 14px 32px;
+          border-radius: 8px;
           font-size: 16px;
-          font-weight: 600;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.3s ease;
+          font-weight: 700;
           text-decoration: none;
-          text-align: center;
-          letter-spacing: 0.5px;
-          font-family: inherit;
+          cursor: pointer;
+          line-height: 1;
+          transition: all 0.3s ease;
         }
 
-        .btn-outline {
-          background-color: transparent;
-          color: white;
-          border: 2px solid rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(2px);
+        .hero-btn-outline1 {
+          background-color: #005BAC;
+          border: 2px solid #005BAC;
         }
 
-        .btn-outline:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-          transform: translateY(-3px);
-          border-color: white;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        .hero-btn-outline1:hover {
+         background-color: #0866b9;
+          border: 2px solid #005BAC;
         }
 
-        .btn-outline:active {
-          transform: translateY(-1px);
+        .hero-btn-primary1 {
+        background-color: #005BAC;
+          border: 2px solid #005BAC;
         }
 
-        .btn-primary {
-          background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-          color: white;
-          border: none;
-          box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        .hero-btn-primary1:hover {
+        background-color: #0866b9;
+          border: 2px solid #005BAC;
         }
 
-        .btn-primary:hover {
-          background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-          transform: translateY(-3px);
-          box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-primary:active {
-          transform: translateY(-1px);
-        }
-
-        /* RTL specific adjustments */
         [dir="rtl"] .hero-heading,
         [dir="rtl"] .hero-headline {
           letter-spacing: 0;
         }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
           .hero-heading {
             font-size: 42px;
@@ -239,15 +211,10 @@ export default function ServiceHero({ lang = "ar" }) {
             padding: 0 10px;
           }
 
-          .btn-outline,
-          .btn-primary {
-            min-width: 160px;
-            padding: 12px 28px;
+          .hero-btn-outline1,
+          .hero-btn-primary1 {
+            padding: 12px 24px;
             font-size: 15px;
-          }
-
-          .hero-buttons {
-            gap: 20px;
           }
         }
 
@@ -266,17 +233,6 @@ export default function ServiceHero({ lang = "ar" }) {
             margin-bottom: 36px;
             line-height: 1.5;
           }
-
-          .btn-outline,
-          .btn-primary {
-            min-width: 150px;
-            padding: 10px 24px;
-            font-size: 14px;
-          }
-
-          .hero-buttons {
-            gap: 16px;
-          }
         }
 
         @media (max-width: 480px) {
@@ -292,15 +248,14 @@ export default function ServiceHero({ lang = "ar" }) {
 
           .hero-buttons {
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
           }
 
-          .btn-outline,
-          .btn-primary {
-            min-width: 200px;
+          .hero-btn-outline1,
+          .hero-btn-primary1 {
             width: 100%;
-            max-width: 260px;
-            padding: 12px 24px;
+            text-align: center;
+            padding: 13px 24px;
           }
         }
 
@@ -316,11 +271,10 @@ export default function ServiceHero({ lang = "ar" }) {
             max-width: 950px;
           }
 
-          .btn-outline,
-          .btn-primary {
-            min-width: 200px;
-            padding: 16px 42px;
-            font-size: 17px;
+          .hero-btn-outline1,
+          .hero-btn-primary1 {
+            padding: 16px 40px;
+            font-size: 18px;
           }
         }
       `}</style>

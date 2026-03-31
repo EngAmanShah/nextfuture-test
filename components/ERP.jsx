@@ -55,17 +55,7 @@ export default function ErpPackages({ lang }) {
             "Permissions management"
           ]
         },
-        {
-          name: "Basic Package",
-          price: "40",
-          period: "/month",
-           bgImage: "/future2.png",
-          features: [
-            "One branch",
-            "One warehouse",
-            "Purchase included"
-          ]
-        }
+    
       ],
       choosePackage: "Choose Package",
       purchase: "Purchase",
@@ -73,7 +63,7 @@ export default function ErpPackages({ lang }) {
       warehouse: "Warehouse"
     },
     ar: {
-      title: "ERP نكست فيوتشر",
+      title: " نكست فيوتشر ERP",
       subtitle: "أنظمة ERP متكاملة للأعمال الحديثة تشمل الإدارة المالية، المبيعات، المخزون، إدارة علاقات العملاء (CRM)، ورؤى مدعومة بالذكاء الاصطناعي في نظام واحد.",
       packages: [
         {
@@ -121,17 +111,7 @@ export default function ErpPackages({ lang }) {
             "إدارة الصلاحيات"
           ]
         },
-        {
-          name: "الباقة الأساسية",
-          price: "٤٠",
-          period: "/شهراً",
-          bgImage: "/future2.png",
-          features: [
-            "فرع واحد",
-            "مخزن واحد",
-            "شراء / شهراً"
-          ]
-        }
+     
       ],
       choosePackage: "اختر الباقة",
       purchase: "شراء",
@@ -168,11 +148,22 @@ export default function ErpPackages({ lang }) {
 
         .title {
           font-size: 2.5rem;
-          font-weight: 700;
-          color: #1a1a1a;
+          font-weight: 800;
           margin: 0 0 15px 0;
           position: relative;
           display: inline-block;
+          font-family: 'Cairo', sans-serif;
+          text-align: center;
+        }
+
+        .title .title-main {
+          color: #1a1a1a;
+          font-weight: 900;
+        }
+
+        .title .title-highlight {
+          color: #0e79d8;
+          font-weight: 900;
         }
 
         .title::after {
@@ -340,12 +331,29 @@ export default function ErpPackages({ lang }) {
         /* Package Meta */
         .package-meta {
           display: flex;
-          justify-content: space-around;
-          margin-top: 15px;
-          padding-top: 15px;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 10px;
+          padding-top: 10px;
           border-top: 1px solid rgba(55, 157, 215, 0.1);
-          font-size: 0.9rem;
-          color: #666;
+          font-size: 0.95rem;
+          color: #444;
+        }
+
+        .meta-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 6px;
+          font-weight: 600;
+        }
+
+        .meta-item span:first-child {
+          opacity: 0.8;
+        }
+
+        .meta-item span:last-child {
+          color: #0e79d8;
         }
 
         .meta-item {
@@ -418,13 +426,22 @@ export default function ErpPackages({ lang }) {
         <div className="container">
           {/* Header */}
           <div className="header">
-            <h1 className="title">{t.title}</h1>
+            <h1 className="title">
+              {t.title.includes('ERP') ? (
+                <>
+                  <span className="title-main">{t.title.replace('ERP', '').trim()}</span>
+                  <span className="title-highlight"> ERP</span>
+                </>
+              ) : (
+                t.title
+              )}
+            </h1>
             <p className="subtitle">{t.subtitle}</p>
           </div>
 
           {/* Packages Grid */}
           <div className="packages-grid">
-            {t.packages.slice(0, 3).map((pkg, idx) => (
+            {t.packages.map((pkg, idx) => (
               <div 
                 key={idx} 
                 className={`package-card ${idx === 1 ? 'popular' : ''}`}
@@ -461,14 +478,35 @@ export default function ErpPackages({ lang }) {
                   ))}
                 </ul>
 
-                {idx < 3 && (
-                  <button 
+                <div className="package-meta">
+                  <div className="meta-item">
+                    <span>{lang === 'ar' ? 'الفرع' : 'Branch'}</span>
+                    <span>{pkg.branch || (lang === 'ar' ? 'فرع واحد' : 'One branch')}</span>
+                  </div>
+                  <div className="meta-item">
+                    <span>{lang === 'ar' ? 'المخزن' : 'Warehouse'}</span>
+                    <span>{pkg.warehouse || (lang === 'ar' ? 'مخزن واحد' : 'One warehouse')}</span>
+                  </div>
+                  <div className="meta-item">
+                    <span>{lang === 'ar' ? 'التكلفة' : 'Cost'}</span>
+                    <span>{pkg.costPeriod || (lang === 'ar' ? '40 شهرياً' : '40 /month')}</span>
+                  </div>
+                </div>
+
+             
+
+                <button 
                     className={`choose-btn ${selectedPackage === idx ? 'selected' : ''}`}
-                    onClick={() => setSelectedPackage(idx)}
+                    onClick={() => {
+                      setSelectedPackage(idx);
+                      window.open(
+                        "https://api.whatsapp.com/send/?phone=%2B966539983393&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C+%D8%A3%D8%B1%D9%8A%D8%AF+%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1+%D8%B9%D9%86+%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85&type=phone_number&app_absent=0",
+                        "_blank"
+                      );
+                    }}
                   >
                     {t.choosePackage}
                   </button>
-                )}
               </div>
             ))}
           </div>

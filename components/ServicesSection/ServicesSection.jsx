@@ -15,8 +15,8 @@ export default function Page({ params }) {
   const translations = {
     en: {
       introTitle: "What We Offer",
-      heroTitle: "Our Services",
-      heroSubtitle: "We provide a diverse range of technology services tailored specifically for our clients to meet their needs and help them achieve their goals with professionalism.",
+      heroTitle: "Our Services - More Than Just Service",
+      heroSubtitle: "We take pride in offering a wide range of tech services designed to meet your unique business needs.",
       explore: "Explore Services",
       learnMore: "Learn More",
       services: [
@@ -90,11 +90,12 @@ export default function Page({ params }) {
     },
     ar: {
       introTitle: "ماذا نقدم",
-      heroTitle: "خدماتنا",
-      heroSubtitle: "نقدم مجموعة متنوعة من الخدمات التقنية المصممة خصيصًا لعملائنا لتلبية احتياجاتهم ومساعدتهم في تحقيق أهدافهم بكل احترافية.",
+      heroTitle: "خدماتنا - أكثر من مجرد خدمة",
+      heroSubtitle: "نفتخر بتقديم مجموعة متنوعة من الخدمات التقنية المصممة",
       explore: "استكشف الخدمات",
       learnMore: "قراءة المزيد",
       services: [
+
         {
           title: "تصميم وتطوير المواقع",
           description: "بناء مواقع ويب قابلة للتطوير ومتجاوبة مصممة خصيصًا لاحتياجات عملك.",
@@ -196,7 +197,7 @@ export default function Page({ params }) {
               className="text-center mb-5 mx-auto"
               style={{ 
                 color: "#666", 
-                fontSize: "1.1rem", 
+                fontSize: "1.3rem", 
                 maxWidth: "800px",
                 lineHeight: "1.8"
               }}

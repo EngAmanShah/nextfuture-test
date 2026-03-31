@@ -451,9 +451,9 @@ export default function ERPPage({ lang = "ar" }) {
 
             {/* Contact CTA */}
             <div className="contact-cta">
-              <Link href="/contact" className="btn-contact">
+              <a href="/contact" className="btn-contact">
                 {ui.contactCta}
-              </Link>
+              </a>
             </div>
           </motion.div>
         </AnimatePresence>

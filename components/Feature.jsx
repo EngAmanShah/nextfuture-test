@@ -5,7 +5,7 @@ import {
   LucideUsers,
 } from "lucide-react";
 
-export default function WhyChooseUs({ lang }) {
+export default function WhyChooseUs({ lang, title, subtitle }) {
   const translations = {
     en: {
       mainTitle: "Why Choose Next Future",
@@ -58,6 +58,12 @@ export default function WhyChooseUs({ lang }) {
   };
 
   const t = translations[lang] || translations.ar;
+  const mainTitle = title || t.mainTitle;
+  const mainSubtitle = subtitle || t.subtitle;
+
+  const bluePhrase = lang === "ar" ? "نكست فيوتشر" : "Next Future Information";
+  const hasBluePhrase = mainTitle.includes(bluePhrase);
+  const titleBefore = hasBluePhrase ? mainTitle.replace(bluePhrase, "") : mainTitle;
 
   return (
     <>
@@ -111,12 +117,34 @@ export default function WhyChooseUs({ lang }) {
         }
 
         .main-title {
-          font-size: 2.5rem;
-          font-weight: 700;
+          font-family: 'Cairo', sans-serif;
+          font-size: 30px !important;
+          font-weight: 900 !important;
+          line-height: 100% !important;
+          letter-spacing: 0% !important;
+          text-align: center !important;
           color: #1a1a1a;
           margin: 0 0 12px 0;
-          line-height: 1.2;
-          letter-spacing: -0.01em;
+          vertical-align: middle;
+        }
+
+        .main-title-base,
+        .main-title-blue {
+          font-family: 'Cairo', sans-serif;
+          font-size: 30px !important;
+          font-weight: 900 !important;
+          line-height: 100% !important;
+          letter-spacing: 0% !important;
+          text-align: center !important;
+          vertical-align: middle;
+        }
+
+        .main-title-base {
+          color: #1a1a1a;
+        }
+
+        .main-title-blue {
+          color: #0e79d8;
         }
 
         .subtitle {
@@ -697,8 +725,17 @@ export default function WhyChooseUs({ lang }) {
         <div className="container">
           {/* Header */}
           <div className="header">
-            <h2 className="main-title">{t.mainTitle}</h2>
-            <p className="subtitle">{t.subtitle}</p>
+            <h2 className="main-title">
+              {hasBluePhrase ? (
+                <>
+                  <span className="main-title-base">{titleBefore}</span>
+                  <span className="main-title-blue">{bluePhrase}</span>
+                </>
+              ) : (
+                mainTitle
+              )}
+            </h2>
+            <p className="subtitle">{mainSubtitle}</p>
           </div>
 
           {/* Features Grid */}
