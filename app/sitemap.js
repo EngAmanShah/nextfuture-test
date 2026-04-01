@@ -4,15 +4,12 @@ export default function sitemap() {
   const routes = [
     '',
     '/about-us',
-    '/blog',
     '/contact-us',
     '/products',
     '/offers',
     '/faq',
     '/service',
-    '/ERP/odoo',
-    '/ERP/property-management',
-    '/ERP/Construction-Management',
+
   ];
 
   const languages = ['en', 'ar'];

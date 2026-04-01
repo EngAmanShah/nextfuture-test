@@ -131,7 +131,7 @@ export default function AboutUs({ params }) {
             {/* Image side */}
             <div className={styles.storyImageWrap}>
               <Image
-                src="/side-img.jpg"
+                src="/about.png"
                 alt="Next Future"
                 width={520}
                 height={420}

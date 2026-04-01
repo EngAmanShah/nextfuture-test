@@ -523,11 +523,17 @@ export default function ContactUsClient({ lang }) {
             width="100%"
             height="420"
             style={{ border: 0, display: "block" }}
-            allowFullScreen=""
+            allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="location map"
-          />
+          >
+            <p style={{ color: '#444', padding: '1rem' }}>
+              {isArabic
+                ? 'يتعذر تحميل الخريطة حالياً. يرجى تحديث الصفحة أو المحاولة لاحقاً.'
+                : 'The map failed to load. Please refresh or try again later.'}
+            </p>
+          </iframe>
         </div>
       </section>
 

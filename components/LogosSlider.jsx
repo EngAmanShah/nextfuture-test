@@ -9,17 +9,16 @@ import Image from "next/image";
 export default function LogosSlider({ lang = "ar" }) {
   const isRTL = lang === "ar";
 
-  const logos = [
+  const baseLogos = [
     { src: "/work/logo5.png", alt: "Client 1" },
     { src: "/work/logo1.png", alt: "Client 2" },
     { src: "/work/logo2.png", alt: "Client 3" },
     { src: "/work/logo3.png", alt: "Client 4" },
     { src: "/work/logo4.png", alt: "Client 5" },
     { src: "/work/logo5.png", alt: "Client 6" },
-    // Add duplicate logos for better loop effect if needed
-    { src: "/work/logo3.png", alt: "Client 3" },
-    { src: "/work/logo4.png", alt: "Client 4" },
   ];
+
+  const logos = [...baseLogos, ...baseLogos, ...baseLogos];
 
   const content = {
     ar: {
@@ -61,9 +60,9 @@ export default function LogosSlider({ lang = "ar" }) {
             pauseOnMouseEnter: true,
             waitForTransition: true,
           }}
-          loop={true}
+          loop={logos.length > 10}
           speed={800}
-          loopAdditionalSlides={4}
+          loopAdditionalSlides={2}
           centeredSlides={false}
           grabCursor={true}
           touchRatio={1.5}
@@ -102,7 +101,7 @@ export default function LogosSlider({ lang = "ar" }) {
                     src={logo.src}
                     alt={logo.alt}
                     fill
-                    sizes="(max-width: 640px) 90px, 120px"
+                    sizes="(max-width: 640px) 130px, 160px"
                     className="logo-img"
                   />
                 </div>
@@ -183,9 +182,9 @@ export default function LogosSlider({ lang = "ar" }) {
 
         .logo-img-wrap {
           position: relative;
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
+          width: 160px;
+          height: 80px;
+          border-radius: 8px;
           overflow: hidden;
           background: #f9fafb;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -220,8 +219,8 @@ export default function LogosSlider({ lang = "ar" }) {
           }
 
           .logo-img-wrap {
-            width: 90px;
-            height: 90px;
+            width: 130px;
+            height: 70px;
           }
 
           .logo-card {

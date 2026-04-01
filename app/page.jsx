@@ -6,7 +6,6 @@ import ServicesSection from "@/components/ServicesSection/ServicesSection";
 import Badge from "@/components/Badge/Badge";
 import Market from "@/components/MarketLeader/Market";
 import ValueSlider from "@/components/ValueSlider";
-import Products from "@/components/Products/Products";
 import Skills from "@/components/Skills/Skills";
 import StartProject from "@/components/StartProject/StartProject";
 import Testimonials from "@/components/Testimonials";

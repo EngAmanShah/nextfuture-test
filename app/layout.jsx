@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "font-awesome/css/font-awesome.css";
 import { ToastContainer } from "react-toastify";
-import ContextProvider from "@/providers/ContextProvider";
 import LayoutWrapper from "./[lang]/LayoutWrapper";
 import BackToTopButton from "@/components/BackToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -75,24 +74,30 @@ const jsonLd = {
   },
 };
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr">
       <head>
-        {/* Google Tag Manager */}
-        <Script
-          id="gtm-head"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        {isProduction && (
+          <>
+            {/* Google Tag Manager */}
+            <Script
+              id="gtm-head"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KRCBKS4J');`,
-          }}
-        />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
+              }}
+            />
+            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+          </>
+        )}
         {/* Font optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -103,15 +108,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body suppressHydrationWarning>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KRCBKS4J"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        {isProduction && (
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-KRCBKS4J"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         {/* Structured Data */}
         <Script
           id="structured-data"
@@ -119,35 +125,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        {/* Google Analytics */}
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-8R5DH60WGN"
-        />
-        <Script
-          id="google-analytics"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
+        {isProduction && (
+          <>
+            {/* Google Analytics */}
+            <Script
+              strategy="lazyOnload"
+              src="https://www.googletagmanager.com/gtag/js?id=G-8R5DH60WGN"
+            />
+            <Script
+              id="google-analytics"
+              strategy="lazyOnload"
+              dangerouslySetInnerHTML={{
+                __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-8R5DH60WGN', { page_path: window.location.pathname, anonymize_ip: true });
             `,
-          }}
-        />
+              }}
+            />
+          </>
+        )}
 
-        <ContextProvider>
-          <LayoutWrapper>
-            <ToastContainer position="top-center" autoClose={3000} />
-            <main className="d-flex flex-column flex-grow-1" style={{ minHeight: "100vh" }}>
-              {children}
-            </main>
-            <BackToTopButton />
-            <WhatsAppButton />
-            <Footer />
-          </LayoutWrapper>
-        </ContextProvider>
+        <LayoutWrapper>
+          <ToastContainer position="top-center" autoClose={3000} />
+          <main className="d-flex flex-column flex-grow-1" style={{ minHeight: "100vh" }}>
+            {children}
+          </main>
+          <BackToTopButton />
+          <WhatsAppButton />
+          <Footer />
+        </LayoutWrapper>
       </body>
     </html>
   );
