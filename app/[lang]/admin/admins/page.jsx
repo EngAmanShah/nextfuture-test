@@ -200,15 +200,15 @@ export default function AdminsPage({ params }) {
                           : "—"}
                       </td>
                       <td>
-                        {user?.uid === PRIMARY_ADMIN_UID && (
-                          <div className="d-flex gap-2">
-                            <Link
-                              href={`/${lang}/admin/edit-admin/${admin.id}`}
-                              className="btn btn-sm btn-outline-primary"
-                            >
-                              <EditIcon fontSize="small" />
-                              {t.edit}
-                            </Link>
+                        <div className="d-flex gap-2">
+                          <Link
+                            href={`/${lang}/admin/edit-admin/${admin.id}`}
+                            className="btn btn-sm btn-outline-primary"
+                          >
+                            <EditIcon fontSize="small" />
+                            {t.edit}
+                          </Link>
+                          {user?.uid === PRIMARY_ADMIN_UID && (
                             <button
                               className="btn btn-sm btn-outline-danger"
                               onClick={() =>
@@ -218,8 +218,8 @@ export default function AdminsPage({ params }) {
                               <DeleteIcon fontSize="small" />
                               {t.remove}
                             </button>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}

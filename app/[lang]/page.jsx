@@ -1,18 +1,13 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import Offer from "@/components/Offer";
 import Features from "@/components/Feature";
 import ERP from "@/components/ERP";
-import ServicesSection from "@/components/ServicesSection/ServicesSection";
-import Badge from "@/components/Badge/Badge";
-import Market from "@/components/MarketLeader/Market";
-import ValueSlider from "@/components/ValueSlider";
-import Products from "@/components/Products/Products";
-import Skills from "@/components/Skills/Skills";
-import StartProject from "@/components/StartProject/StartProject";
-import Testimonials from "@/components/Testimonials";
 import ZakatAuthoritySection from "@/components/ZakatAuthoritySection";
-import LogosSlider from "@/components/LogosSlider";
-import HomeFAQ from "@/components/HomeFAQ";
+
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const LogosSlider = dynamic(() => import("@/components/LogosSlider"));
+const HomeFAQ = dynamic(() => import("@/components/HomeFAQ"));
 
 export default async function Home({ params }) {
   const { lang } = await params;
@@ -42,15 +37,7 @@ export default async function Home({ params }) {
     },
   };
 
-  const {
-    headingTitle,
-    heroHeadline,
-    heroBig,
-    heroFooter,
-    shopNow,
-    whyChooseTitle,
-    whyChooseDescription,
-  } = content[lang] || content.en;
+  const { whyChooseTitle, whyChooseDescription } = content[lang] || content.en;
 
   return (
     <>

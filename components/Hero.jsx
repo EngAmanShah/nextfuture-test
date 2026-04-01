@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Cairo } from "next/font/google";
@@ -9,7 +10,20 @@ const cairo = Cairo({
 });
 
 export default function HeroSection({ lang = "ar" }) {
+  const [showVideo, setShowVideo] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const isRTL = lang === "ar";
+
+  useEffect(() => {
+    setIsLoaded(true);
+    // Only load video on desktop after initial render
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    if (mediaQuery.matches) {
+      // Delay video loading to improve LCP
+      const timer = setTimeout(() => setShowVideo(true), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Content matching the image exactly
   const content = {
@@ -33,66 +47,222 @@ export default function HeroSection({ lang = "ar" }) {
   const currentContent = content[lang] || content.ar;
 
   return (
-    <section className={`hero ${cairo.className}`} dir={isRTL ? "rtl" : "ltr"}>
+    <section
+      className={`hero ${cairo.className}`}
+      dir={isRTL ? "rtl" : "ltr"}
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+        width: "100%",
+        overflow: "hidden",
+        backgroundColor: "#001233",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {/* Background video - only on desktop, delayed load */}
+      {showVideo && (
+        <video
+          src="/coding.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 1,
+          }}
+          aria-hidden="true"
+        >
+          <track
+            kind="captions"
+            srcLang={lang}
+            label={lang === "ar" ? "العربية" : "English"}
+          />
+        </video>
+      )}
+
       {/* Dark overlay */}
-      <div className="hero-overlay" />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "linear-gradient(135deg, rgba(11, 36, 71, 0.85) 0%, rgba(11, 100, 150, 0.75) 40%, rgba(8, 80, 130, 0.7) 70%, rgba(0, 60, 110, 0.65) 100%)",
+          zIndex: 2,
+        }}
+        aria-hidden="true"
+      />
 
       {/* Content */}
-      <div className="hero-content">
+      <div
+        style={{
+          position: "relative",
+          maxWidth: "1000px",
+          width: "100%",
+          padding: "0 30px",
+          textAlign: "center",
+          color: "white",
+          zIndex: 3,
+        }}
+      >
         {/* Heading - first line */}
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="hero-heading"
+          style={{
+            color: "white",
+            fontSize: "40px",
+            fontWeight: 800,
+            marginBottom: "40px",
+            lineHeight: 1.25,
+            textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
+          }}
         >
           {currentContent.heading1}
         </motion.h1>
 
         {/* Line spacing after heading */}
-        <div className="line-spacing" />
+        <div style={{ height: "30px", width: "100%" }} />
 
         {/* Headline - second line */}
         <motion.h5
-          className="hero-headline"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
+          style={{
+            color: "white",
+            fontSize: "26px",
+            fontWeight: 600,
+            marginBottom: "40px",
+            lineHeight: 1.6,
+            textShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
+          }}
         >
           {currentContent.headline1}
         </motion.h5>
 
         {/* Line spacing after headline */}
-        <div className="line-spacing" />
+        <div style={{ height: "30px", width: "100%" }} />
 
         {/* Big text - third line (long paragraph) */}
         <motion.h6
-          className="hero-big"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          style={{
+            color: "white",
+            fontSize: "22px",
+            fontWeight: 600,
+            lineHeight: 1.8,
+            margin: "0 auto 55px",
+            maxWidth: "850px",
+            textShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
+            opacity: 0.95,
+          }}
         >
           {currentContent.big1}
         </motion.h6>
 
         {/* Line spacing before buttons */}
-        <div className="line-spacing-large" />
+        <div style={{ height: "55px", width: "100%" }} />
 
         {/* Buttons */}
         <motion.div
-          className="hero-buttons"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          style={{
+            display: "flex",
+            gap: "40px",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            marginTop: 0,
+          }}
         >
           <Link href={`/${lang}/service`}>
-            <button className="hero-btn-primary">
+            <button
+              style={{
+                height: "60px",
+                width: "300px",
+                marginInlineEnd: "20px",
+                padding: "0 35px",
+                fontSize: "18px",
+                fontWeight: 700,
+                color: "#ffffff",
+                background: "linear-gradient(135deg, #0e68dd 0%, #0a4eb9 100%)",
+                border: "none",
+                borderRadius: "12px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                boxShadow: "0 10px 20px rgba(37, 99, 235, 0.2)",
+                letterSpacing: "0.25px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background =
+                  "linear-gradient(135deg, #2f88f3 0%, #1771c4 100%)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow =
+                  "0 12px 30px rgba(37, 99, 235, 0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background =
+                  "linear-gradient(135deg, #0e68dd 0%, #0a4eb9 100%)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow =
+                  "0 10px 20px rgba(37, 99, 235, 0.2)";
+              }}
+            >
               {currentContent.primaryBtn1}
             </button>
           </Link>
 
           <Link href={`/${lang}/contact-us`}>
-            <button className="hero-btn-outline">
+            <button
+              style={{
+                height: "60px",
+                width: "300px",
+                padding: "0 35px",
+                fontSize: "18px",
+                fontWeight: 700,
+                color: "#ffffff",
+                backgroundColor: "rgba(255, 255, 255, 0.16)",
+                border: "2px solid rgba(255, 255, 255, 0.35)",
+                borderRadius: "12px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                boxShadow: "0 10px 20px rgba(37, 99, 235, 0.2)",
+                letterSpacing: "0.25px",
+                backdropFilter: "blur(4px)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor =
+                  "rgba(255, 255, 255, 0.26)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.8)";
+                e.currentTarget.style.boxShadow =
+                  "0 12px 30px rgba(37, 99, 235, 0.28)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor =
+                  "rgba(255, 255, 255, 0.16)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.35)";
+                e.currentTarget.style.boxShadow =
+                  "0 10px 20px rgba(37, 99, 235, 0.2)";
+              }}
+            >
               {currentContent.secondaryBtn1}
             </button>
           </Link>
@@ -100,238 +270,15 @@ export default function HeroSection({ lang = "ar" }) {
       </div>
 
       <style jsx>{`
-        .hero {
-          position: relative;
-          min-height: 100vh;
-          width: 100%;
-          overflow: hidden;
-          background-image: url("/new-bg.jpg");
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .hero-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            135deg,
-            rgba(11, 36, 71, 0.85) 0%,
-            rgba(11, 100, 150, 0.75) 40%,
-            rgba(8, 80, 130, 0.7) 70%,
-            rgba(0, 60, 110, 0.65) 100%
-          );
-        }
-
-        .hero-content {
-          position: relative;
-          max-width: 1000px;
-          width: 100%;
-          padding: 0 30px;
-          text-align: center;
-          color: white;
-        }
-
-        .hero-heading {
-          color: white;
-          font-size: 40px;
-          font-weight: 800;
-          margin-bottom: 40px;
-          line-height: 1.25;
-          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-headline {
-          color: white;
-          font-size: 26px;
-          font-weight: 600;
-          margin-bottom: 40px;
-          line-height: 1.6;
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-big {
-          color: white;
-          font-size: 22px;
-          font-weight: 600;
-          line-height: 1.8;
-          margin: 0 auto 55px;
-          max-width: 850px;
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-          opacity: 0.95;
-        }
-
-        .line-spacing {
-          height: 30px;
-          width: 100%;
-        }
-
-        .line-spacing-large {
-          height: 55px;
-          width: 100%;
-        }
-
-        .hero-buttons {
-          display: flex;
-          gap: 40px;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-          margin-top: 0px;
-        }
-
-        .hero-btn-primary {
-          height: 60px;
-          width: 300px !important;
-          margin-inline-end: 20px;
-          padding: 0 35px;
-          font-size: 18px;
-          font-weight: 700;
-          color: #ffffff;
-          background: linear-gradient(135deg, #0e68dd 0%, #0a4eb9 100%);
-          border: none;
-          border-radius: 12px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-          letter-spacing: 0.25px;
-        }
-
-        .hero-btn-primary:hover {
-          background: linear-gradient(135deg, #2f88f3 0%, #1771c4 100%);
-          transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
-        }
-
-        .hero-btn-outline {
-          height: 60px;
-          width: 300px !important;
-          padding: 0 35px;
-          font-size: 18px;
-          font-weight: 700;
-          color: #ffffff;
-          background-color: rgba(255, 255, 255, 0.16);
-          border: 2px solid rgba(255, 255, 255, 0.35);
-          border-radius: 12px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-          letter-spacing: 0.25px;
-          backdrop-filter: blur(4px);
-        }
-
-        .hero-btn-outline:hover {
-          background-color: rgba(255, 255, 255, 0.26);
-          transform: translateY(-2px);
-          border-color: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28);
-        }
-
         @media (max-width: 768px) {
-          .hero {
-            background-attachment: scroll;
+          section.hero {
             padding: 100px 0;
           }
 
-          .hero-heading {
-            font-size: 34px;
-            margin-bottom: 34px;
-            line-height: 1.3;
-          }
-
-          .hero-headline {
-            font-size: 22px;
-            margin-bottom: 34px;
-            line-height: 1.6;
-          }
-
-          .hero-big {
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 44px;
-          }
-
-          .line-spacing {
-            height: 28px;
-          }
-
-          .line-spacing-large {
-            height: 50px;
-          }
-
-          .hero-buttons {
-            gap: 15px;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 55px;
-          }
-
-          .hero-btn-primary,
-          .hero-btn-outline {
-            height: 55px;
-            min-width: 200px;
-            font-size: 16px;
-            padding: 0 30px;
-            width: 100%;
-            margin-top: 24px;
-          }
-
-          .hero-btn-primary {
-            margin-inline-end: 0;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hero-heading {
-            font-size: 26px;
-            margin-bottom: 28px;
-            line-height: 1.3;
-          }
-
-          .hero-headline {
-            font-size: 18px;
-            margin-bottom: 28px;
-            line-height: 1.6;
-          }
-
-          .hero-big {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-          }
-
-          .line-spacing {
-            height: 22px;
-          }
-
-          .line-spacing-large {
-            height: 40px;
-          }
-
-          .hero-buttons {
-            gap: 15px;
-            flex-direction: column;
-            width: 100%;
-          }
-
-          .hero-btn-primary,
-          .hero-btn-outline {
-            height: 50px;
-            min-width: 200px;
-            font-size: 15px;
-            letter-spacing: 1.5px;
-            padding: 0 25px;
-            width: 100%;
-          }
-
-          .hero-btn-primary {
-            margin-inline-end: 0;
+          @media (max-width: 480px) {
+            section.hero {
+              padding: 80px 0;
+            }
           }
         }
       `}</style>

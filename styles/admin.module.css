@@ -218,8 +218,24 @@
 /* tighten up switcher when used in header */
 .admin-lang-switcher {
     width: 2px !important;
-    height: 18px !important;
 }
+
+/* Fixed admin top bar */
+.admin-header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1050;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-body-wrapper {
+    margin-top: 72px;
+}
+
 .admin-lang-switcher .flag-icon,
 .admin-lang-switcher .flag-icon-only {
     width: 12px !important;

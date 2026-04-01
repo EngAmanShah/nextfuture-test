@@ -373,7 +373,7 @@ export default function Footer({ lang }) {
                 height={80}
                 priority
                 className="logo-image"
-                style={{ width: "220px", height: "auto" }}
+                style={{ width: "auto", height: "80px" }}
               />
             </Link>
           </div>
@@ -412,7 +412,7 @@ export default function Footer({ lang }) {
                 width={70}
                 height={30}
                 className="vision-logo"
-                style={{ width: "70px", height: "auto" }}
+                style={{ width: "auto", height: "30px" }}
               />
             </div>
 

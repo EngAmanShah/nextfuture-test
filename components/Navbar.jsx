@@ -203,7 +203,7 @@ export default function Navbar({ lang }) {
           </Link>
 
           {/* Mobile Top Buttons */}
-          <div className="d-lg-none d-flex align-items-center gap-2">
+          <div className="mobile-top-shell align-items-center gap-2">
             <div className="language-pill">
               <LanguageSwitcher lang={lang} showFlag={true} showText={false} />
             </div>
@@ -221,7 +221,7 @@ export default function Navbar({ lang }) {
           </div>
 
           {/* Desktop Navbar Links */}
-          <div className="d-none d-lg-flex align-items-center">
+          <div className="desktop-nav-shell align-items-center">
             <ul className="navbar-nav mx-auto align-items-center">
               {menuItems.map((item, index) => (
                 <li
@@ -374,7 +374,7 @@ export default function Navbar({ lang }) {
               width={140}
               height={52}
               priority
-              style={{ width: "140px", height: "auto" }}
+              style={{ width: "auto", height: "52px" }}
             />
           </Link>
           <button

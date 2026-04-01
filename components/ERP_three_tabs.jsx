@@ -4,9 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Cairo } from "next/font/google";
 import {
-  LuCheckCircle,
   LuTrendingUp,
-  LuPieChart,
   LuUsers,
   LuGraduationCap,
   LuBuilding,
@@ -40,8 +38,8 @@ const tabsDataByLang = {
           features: [
             { text: "تقليل التكلفة التشغيلية ورفع الأداء", icon: LuTrendingUp },
             { text: "دمج التطبيقات ضمن بيئة واحدة", icon: LuDatabase },
-            { text: "تناسق البيانات وتناغم العمليات", icon: LuPieChart },
-            { text: "مناسب لجميع الشركات من الناشئة حتى الكبرى", icon: LuPieChart },
+            { text: "تناسق البيانات وتناغم العمليات", icon: LuDatabase },
+            { text: "مناسب لجميع الشركات من الناشئة حتى الكبرى", icon: LuBuilding },
           ]
         },
         {
@@ -50,7 +48,7 @@ const tabsDataByLang = {
           image: "/odoo2.webp",
           features: [
             { text: "التحول من مستخدم مبتدئ إلى محترف في النظام", icon: LuGraduationCap },
-            { text: "معرفة دقيقة بكل وحدة وظيفية", icon: LuCheckCircle },
+            { text: "معرفة دقيقة بكل وحدة وظيفية", icon: LuFileText },
             { text: "مناسب لجميع الشركات من الناشئة حتى الكبرى", icon: LuBuilding },
           ]
         }
@@ -73,7 +71,7 @@ const tabsDataByLang = {
       features: [
         { text: "نظام تتبع العمال والمعدات - توفر المعلومات المهمة ومعرفة مواقع المعدات بشكل فعال", icon: LuUsers },
         { text: "إصدار تقارير مالية مفصلة - تقارير في الوقت الفعلي لتسهيل اتخاذ القرارات", icon: LuFileText },
-        { text: "برنامج محاسبة للمقاولات - يربط بين المشاريع والموازنات بدقة وجمع المعلومات", icon: LuPieChart },
+        { text: "برنامج محاسبة للمقاولات - يربط بين المشاريع والموازنات بدقة وجمع المعلومات", icon: LuDatabase },
         { text: "برنامج إدارة المشاريع الإنشائية - لتحقيق رؤية كاملة لكل مراحل التنفيذ بكفاءة", icon: LuBriefcase },
       ],
       faq: [
@@ -118,10 +116,10 @@ const tabsDataByLang = {
       title: "The Integrated Solution for Managing Your Business Effectively",
       subtitle: "",
       description: "Discover how Odoo provides a comprehensive open-source ERP system for managing sales, accounting, inventory, marketing, and human resources. Learn about its features, benefits, and how to use it to grow your business with ease and in alignment with Saudi Vision 2030.",
-      buttons: [
-        { text: "Book an Appointment", type: "primary", link: "/contact" },
-        { text: "Download Brochure", type: "outline", link: "/brochure" },
-      ],
+      // buttons: [
+      //   { text: "Book an Appointment", type: "primary", link: "/contact" },
+      //   { text: "Download Brochure", type: "outline", link: "/brochure" },
+      // ],
       sections: [
         {
           title: "What is Odoo?",
@@ -131,7 +129,7 @@ const tabsDataByLang = {
           features: [
             { text: "Reduce operational costs and boost performance", icon: LuTrendingUp },
             { text: "Integrate all applications in a single environment", icon: LuDatabase },
-            { text: "Data consistency and process harmony", icon: LuPieChart },
+            { text: "Data consistency and process harmony", icon: LuDatabase },
             { text: "Suitable for all companies from startups to enterprises", icon: LuBuilding },
           ]
         },
@@ -141,7 +139,7 @@ const tabsDataByLang = {
           image: "/odoo2.webp",
           features: [
             { text: "Transition from a beginner to a system professional", icon: LuGraduationCap },
-            { text: "Precise knowledge of each functional module", icon: LuCheckCircle },
+            { text: "Precise knowledge of each functional module", icon: LuFileText },
             { text: "Suitable for all companies from startups to enterprises", icon: LuBuilding },
           ]
         }
@@ -164,7 +162,7 @@ const tabsDataByLang = {
       features: [
         { text: "Worker & equipment tracking system — know locations and key info in real time", icon: LuUsers },
         { text: "Detailed financial reports — real-time insights to support decision-making", icon: LuFileText },
-        { text: "Construction accounting software — link projects and budgets with precision", icon: LuPieChart },
+        { text: "Construction accounting software — link projects and budgets with precision", icon: LuDatabase },
         { text: "Construction project management — full visibility across all execution stages", icon: LuBriefcase },
       ],
       faq: [
@@ -179,10 +177,10 @@ const tabsDataByLang = {
       subtitle: "The Integrated Property & Real Estate Management System",
       description: "A comprehensive software module designed specifically for property owners, real estate brokerage firms, and developers. Manage all aspects of your properties in one place with automated key processes and real-time insight into your portfolio performance.",
       image: "/third_tab.jpg",
-      buttons: [
-        { text: "Book an Appointment", type: "primary", link: "/contact" },
-        { text: "Download Brochure", type: "outline", link: "/brochure" },
-      ],
+      // buttons: [
+      //   { text: "Book an Appointment", type: "primary", link: "/contact" },
+      //   { text: "Download Brochure", type: "outline", link: "/brochure" },
+      // ],
       sections: [
         {
           title: "What is a Property Management System?",
@@ -405,7 +403,7 @@ export default function ERPPage({ lang = "ar" }) {
                         <ul className="feature-list">
                           {feature.items.map((item, iIdx) => (
                             <li key={iIdx}>
-                              {LuCheckCircle && <LuCheckCircle size={18} />}
+                              <LuFileText size={18} />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -882,7 +880,7 @@ export default function ERPPage({ lang = "ar" }) {
           background: transparent;
           border: none;
           cursor: pointer;
-          text-align: right;
+          text-align: start;
           font-size: 16px;
           font-weight: 600;
           color: #0f172a;
@@ -899,7 +897,7 @@ export default function ERPPage({ lang = "ar" }) {
 
         .faq-question-text {
           flex: 1;
-          text-align: right;
+          text-align: start;
         }
 
         .faq-toggle-icon {
@@ -913,7 +911,7 @@ export default function ERPPage({ lang = "ar" }) {
           border-radius: 50%;
           font-size: 18px;
           font-weight: bold;
-          margin-left: 16px;
+          margin-inline-start: 16px;
           flex-shrink: 0;
           transition: transform 0.3s ease;
         }

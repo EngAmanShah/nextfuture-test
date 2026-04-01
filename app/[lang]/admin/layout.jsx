@@ -2,6 +2,7 @@
 import styles from "@/styles/admin.module.css";
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "@/providers/ContextProvider";
+import ContextProvider from "@/providers/ContextProvider";
 import { use } from "react";
 import Link from "next/link";
 import { auth } from "@/configuration/firebase-config";
@@ -23,6 +24,14 @@ import Loading from "@/components/Loading";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function AdminAccount({ params, children }) {
+  return (
+    <ContextProvider>
+      <AdminAccountContent params={params}>{children}</AdminAccountContent>
+    </ContextProvider>
+  );
+}
+
+function AdminAccountContent({ params, children }) {
   const { lang } = use(params);
   const router = useRouter();
   const { contacts } = useContext(Context);
@@ -58,16 +67,12 @@ export default function AdminAccount({ params, children }) {
       signOut: "Sign Out",
     },
     ar: {
-      systemManagement: "إدارة النظام",
-      articles: "",
       contacts: "رسائل التواصل",
       erpDetails: "تفاصيل نكست ERP",
       admins: "المشرفون",
-      settings: "إعدادات الاتصال",
       profile: "ملفي الشخصي",
       password: "تغيير كلمة المرور",
       email: "تغيير البريد الإلكتروني",
-      signOut: "تسجيل الخروج",
     },
   };
 
@@ -87,11 +92,7 @@ export default function AdminAccount({ params, children }) {
     <>
       {/*Header*/}
       <div
-        className="d-flex align-items-center justify-content-between px-3 py-2"
-        style={{
-       
-
-        }}
+        className={`${styles["admin-header-fixed"]} d-flex align-items-center justify-content-between px-3 py-2`}
       >
         <Link href={`/${lang}`} className="d-none d-lg-flex">
           <img
@@ -101,10 +102,129 @@ export default function AdminAccount({ params, children }) {
           />
         </Link>
 
-    
+        <div className="d-flex align-items-center gap-3 ms-auto">
+          {/* Language Switcher */}
+          <LanguageSwitcher lang={lang} />
 
-      
-        
+          {/* Settings/Profile Dropdown */}
+          <div style={{ position: "relative" }}>
+            <button
+              className="btn btn-light border-0"
+              onClick={toggleSettingDropdown}
+              style={{ display: "flex", alignItems: "center", gap: "8px" }}
+            >
+              <SettingsOutlinedIcon />
+              {showSettingDropdown ? (
+                <ArrowDropUpSharpIcon />
+              ) : (
+                <ArrowDropDownSharpIcon />
+              )}
+            </button>
+
+            {showSettingDropdown && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  right: 0,
+                  background: "white",
+                  border: "1px solid #e0e0e0",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  zIndex: 1000,
+                  minWidth: "200px",
+                  marginTop: "8px",
+                }}
+              >
+                <Link
+                  href={`/${lang}/admin/edit-profile`}
+                  className="dropdown-item"
+                  style={{
+                    display: "block",
+                    padding: "10px 16px",
+                    color: "#333",
+                    textDecoration: "none",
+                    borderBottom: "1px solid #f0f0f0",
+                    transition: "background 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f9f9f9")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  {t.profile}
+                </Link>
+                <Link
+                  href={`/${lang}/admin/change-password`}
+                  className="dropdown-item"
+                  style={{
+                    display: "block",
+                    padding: "10px 16px",
+                    color: "#333",
+                    textDecoration: "none",
+                    borderBottom: "1px solid #f0f0f0",
+                    transition: "background 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f9f9f9")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  {t.password}
+                </Link>
+                <Link
+                  href={`/${lang}/admin/change-email`}
+                  className="dropdown-item"
+                  style={{
+                    display: "block",
+                    padding: "10px 16px",
+                    color: "#333",
+                    textDecoration: "none",
+                    borderBottom: "1px solid #f0f0f0",
+                    transition: "background 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f9f9f9")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  {t.email}
+                </Link>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setShowSettingDropdown(false);
+                  }}
+                  className="dropdown-item"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "10px 16px",
+                    color: "#dc3545",
+                    textDecoration: "none",
+                    background: "transparent",
+                    border: "none",
+                    width: "100%",
+                    cursor: "pointer",
+                    fontWeight: "500",
+                    transition: "background 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f9f9f9")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  <LogoutOutlinedIcon style={{ fontSize: "18px" }} />
+                  {t.signOut}
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="btn btn-light border-0 d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu"
+          >
+            <MenuOpenRoundedIcon />
+          </button>
+        </div>
       </div>
       <div className="d-flex bg-light">
         <div
@@ -115,15 +235,7 @@ export default function AdminAccount({ params, children }) {
           id="offcanvasMenu"
           aria-labelledby="offcanvasMenuLabel"
         >
-          {/* <div className="offcanvas-header">
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-              data-bs-target="#offcanvasMenu"
-              aria-label="Close"
-            ></button>
-          </div> */}
+      
           <div className="offcanvas-body">
             <div
               className="navigation bg-white p-3"
@@ -135,19 +247,7 @@ export default function AdminAccount({ params, children }) {
               }}
             >
               <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
-                <Link
-                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
-                    pathName === `/${lang}/admin/system-management`
-                      ? styles["active-route"]
-                      : ""
-                  }`}
-                  href={`/${lang}/admin/system-management`}
-                >
-                  <DashboardIcon />
-                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
-                    {t.systemManagement}
-                  </h5>
-                </Link>
+            
               </div>
               <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
                 <Link
@@ -220,114 +320,14 @@ export default function AdminAccount({ params, children }) {
                   </h5>
                 </Link>
               </div>
-              <div data-bs-dismiss="offcanvas" data-bs-target="#offcanvasMenu">
-                <Link
-                  className={`${styles["account-nav-item"]} mb-1 mb-xl-2 ${
-                    pathName === `/${lang}/admin/settings`
-                      ? styles["active-route"]
-                      : ""
-                  }`}
-                  href={`/${lang}/admin/settings`}
-                >
-                  <SettingsIcon />
-                  <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
-                    {t.settings}
-                  </h5>
-                </Link>
-              </div>
-              <div
-                className={`${styles["account-nav-item"]} mb-1 mb-xl-2 cursor-pointer`}
-                onClick={toggleSettingDropdown}
-              >
-                <SettingsOutlinedIcon />
-                <h5
-                  className={`m-0 ${lang === "en" ? "ms-3" : "me-3"} ${
-                    lang === "en" ? "me-5" : "ms-5"
-                  }`}
-                >
-                  {t.profile}
-                </h5>
-                {showSettingDropdown === false ? (
-                  <ArrowDropDownSharpIcon />
-                ) : (
-                  <ArrowDropUpSharpIcon />
-                )}
-              </div>
-              <div>
-                {showSettingDropdown && (
-                  <div style={{ paddingLeft: "40px" }}>
-                    <div
-                      data-bs-dismiss="offcanvas"
-                      data-bs-target="#offcanvasMenu"
-                    >
-                      <Link
-                        className={`${
-                          styles["account-nav-item"]
-                        } mb-1 mb-xl-2 ${
-                          pathName === `/${lang}/admin/profile`
-                            ? styles["active-route"]
-                            : ""
-                        }`}
-                        href={`/${lang}/admin/profile`}
-                        style={{ fontWeight: "500" }}
-                      >
-                        {t.profile}
-                      </Link>
-                    </div>
-                    <div
-                      data-bs-dismiss="offcanvas"
-                      data-bs-target="#offcanvasMenu"
-                    >
-                      <Link
-                        className={`${
-                          styles["account-nav-item"]
-                        } mb-1 mb-xl-2 ${
-                          pathName === `/${lang}/admin/change-password`
-                            ? styles["active-route"]
-                            : ""
-                        }`}
-                        href={`/${lang}/admin/change-password`}
-                        style={{ fontWeight: "500" }}
-                      >
-                        {t.password}
-                      </Link>
-                    </div>
-                    <div
-                      data-bs-dismiss="offcanvas"
-                      data-bs-target="#offcanvasMenu"
-                    >
-                      <Link
-                        className={`${
-                          styles["account-nav-item"]
-                        } mb-1 mb-xl-2 ${
-                          pathName === `/${lang}/admin/change-email`
-                            ? styles["active-route"]
-                            : ""
-                        }`}
-                        href={`/${lang}/admin/change-email`}
-                        style={{ fontWeight: "500" }}
-                      >
-                        {t.email}
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div
-                className={`${styles["sign-out"]} ${styles["account-nav-item"]} mt-5 cursor-pointer`}
-                onClick={handleLogout}
-                data-bs-dismiss="offcanvas"
-                data-bs-target="#offcanvasMenu"
-              >
-                <LogoutOutlinedIcon />
-                <h5 className={`m-0 ${lang === "en" ? "ms-3" : "me-3"}`}>
-                  {t.signOut}
-                </h5>
-              </div>
+             
+             
+          
+           
             </div>
           </div>
         </div>
-        <div className={`p-3 ${styles["account-child-container"]}`}>
+        <div className={`${styles["admin-body-wrapper"]} p-3 ${styles["account-child-container"]}`}>
           {children}
         </div>
       </div>

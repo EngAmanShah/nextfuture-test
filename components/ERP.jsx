@@ -505,17 +505,13 @@ export default function ErpPackages({ lang }) {
                 <h3 className="package-name">{pkg.name}</h3>
                 
                 <div className="package-price">
-                  {pkg.oldPrice && <span className="old-price">﷼{pkg.oldPrice}</span>}
-                  {pkg.period &&
-                  (pkg.period.includes('شهراً') ||
-                    pkg.period.toLowerCase().includes('month')) && (
-                    <img
-                      src="/saudi_riyal.png"
-                      alt="Saudi Riyal"
-                      className="riyal-icon"
-                    />
-                  )}
-                  <span className="price">﷼{pkg.price}</span>
+                  {pkg.oldPrice && <span className="old-price">{pkg.oldPrice}</span>}
+                  <img
+                    src="/saudi_riyal.png"
+                    alt="Saudi Riyal"
+                    className="riyal-icon"
+                  />
+                  <span className="price">{pkg.price}</span>
                   <span className="price-period">{pkg.period}</span>
                 </div>
 

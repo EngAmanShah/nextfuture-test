@@ -1,203 +1,149 @@
 "use client";
-import React, { useState } from "react";
-import { use } from "react";
-import { useRouter } from "next/navigation";
-import {
-  AdminPanelSettings,
-  Security,
-  Language,
-  Palette,
-  Notifications,
-  Storage,
-  Email,
-  Public,
-  Code,
-  Build,
-} from "@mui/icons-material";
+import React, { useState, useContext } from "react";
+import Link from "next/link";
+import { Context } from "@/providers/ContextProvider";
+import styles from "@/styles/admin.module.css";
+import { usePathname } from "next/navigation";
+import SettingsIcon from "@mui/icons-material/Settings";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 
 export default function SystemManagement({ params }) {
-  const { lang } = use(params);
-  const router = useRouter();
+  const { lang } = React.use(params);
+  const pathName = usePathname();
+  const { contacts } = useContext(Context);
+  const unreadMessages = contacts.filter((contact) => contact.read === false);
 
   const translations = {
     en: {
-      title: "System Management",
-      subtitle: "Manage system-wide configurations and settings",
-      adminManagement: "Admin Management",
-      adminDesc: "Manage administrator accounts and permissions",
-      contactSettings: "Contact Settings",
-      contactDesc: "Configure contact information and social media",
-      security: "Security Settings",
-      securityDesc: "Manage security policies and authentication",
-      notifications: "Notifications",
-      notificationsDesc: "Configure email and push notifications",
-      appearance: "Appearance",
-      appearanceDesc: "Customize theme and branding",
-      language: "Language Settings",
-      languageDesc: "Manage supported languages and translations",
-      storage: "Storage Management",
-      storageDesc: "Manage file storage and media assets",
-      api: "API Configuration",
-      apiDesc: "Configure API keys and integrations",
-      general: "General",
-      advanced: "Advanced",
+      systemTitle: "System Management",
+      dashboard: "Dashboard",
+      erpDetails: "Next ERP Details",
+      contacts: "Contact Messages",
+      admins: "Administrators",
+      settings: "Contact Settings",
+      welcome: "Welcome to Admin Control Panel",
+      manageSystem: "Manage system settings, users, and content",
+      unreadMessages: "Unread Messages:",
     },
     ar: {
-      title: "إدارة النظام",
-      subtitle: "إدارة إعدادات النظام والتكوينات",
-      adminManagement: "إدارة المشرفين",
-      adminDesc: "إدارة حسابات المشرفين والصلاحيات",
-      contactSettings: "إعدادات الاتصال",
-      contactDesc: "تكوين معلومات الاتصال ووسائل التواصل",
-      security: "إعدادات الأمان",
-      securityDesc: "إدارة سياسات الأمان والمصادقة",
-      notifications: "الإشعارات",
-      notificationsDesc: "تكوين إشعارات البريد والدفع",
-      appearance: "المظهر",
-      appearanceDesc: "تخصيص الثيم والعلامة التجارية",
-      language: "إعدادات اللغة",
-      languageDesc: "إدارة اللغات المدعومة والترجمات",
-      storage: "إدارة التخزين",
-      storageDesc: "إدارة ملفات التخزين والوسائط",
-      api: "تكوين API",
-      apiDesc: "تكوين مفاتيح API والتكاملات",
-      general: "عام",
-      advanced: "متقدم",
+      systemTitle: "إدارة النظام",
+      dashboard: "لوحة التحكم",
+      erpDetails: "تفاصيل نكست ERP",
+      contacts: "رسائل التواصل",
+      admins: "المشرفون",
+      settings: "إعدادات التواصل",
+      welcome: "مرحبا بك في لوحة التحكم",
+      manageSystem: "إدارة إعدادات النظام والمستخدمين والمحتوى",
+      unreadMessages: "الرسائل غير المقروءة:",
     },
   };
 
   const t = translations[lang] || translations.en;
 
-  const settingsCards = [
+  const menuItems = [
     {
-      title: t.adminManagement,
-      description: t.adminDesc,
-      icon: AdminPanelSettings,
-      color: "#3b82f6",
-      path: "/admin/admins",
+      label: t.erpDetails,
+      href: `/${lang}/admin/erp-details`,
+      icon: <ArticleOutlinedIcon />,
+      active: pathName === `/${lang}/admin/erp-details`,
     },
     {
-      title: t.contactSettings,
-      description: t.contactDesc,
-      icon: Email,
-      color: "#10b981",
-      path: "/admin/settings",
+      label: t.contacts,
+      href: `/${lang}/admin/contacts`,
+      icon: <ContactsOutlinedIcon />,
+      badge: unreadMessages.length,
+      active: pathName === `/${lang}/admin/contacts`,
     },
     {
-      title: t.security,
-      description: t.securityDesc,
-      icon: Security,
-      color: "#ef4444",
-      path: "/admin/security-settings",
+      label: t.admins,
+      href: `/${lang}/admin/admins`,
+      icon: <SupervisorAccountIcon />,
+      active: pathName === `/${lang}/admin/admins`,
     },
     {
-      title: t.notifications,
-      description: t.notificationsDesc,
-      icon: Notifications,
-      color: "#f59e0b",
-      path: "/admin/notification-settings",
-    },
-    {
-      title: t.appearance,
-      description: t.appearanceDesc,
-      icon: Palette,
-      color: "#8b5cf6",
-      path: "/admin/appearance-settings",
-    },
-    {
-      title: t.language,
-      description: t.languageDesc,
-      icon: Language,
-      color: "#06b6d4",
-      path: "/admin/language-settings",
-    },
-    {
-      title: t.storage,
-      description: t.storageDesc,
-      icon: Storage,
-      color: "#ec4899",
-      path: "/admin/storage-settings",
-    },
-    {
-      title: t.api,
-      description: t.apiDesc,
-      icon: Code,
-      color: "#6366f1",
-      path: "/admin/api-settings",
+      label: t.settings,
+      href: `/${lang}/admin/contact-settings`,
+      icon: <SettingsIcon />,
+      active: pathName === `/${lang}/admin/contact-settings`,
     },
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="mb-4">
-        <h2 className="fw-bold mb-2">{t.title}</h2>
-        <p className="text-muted">{t.subtitle}</p>
+    <div style={{ padding: "20px" }}>
+      <div style={{ marginBottom: "40px" }}>
+        <h1 style={{ color: "#005BAC", marginBottom: "10px" }}>{t.welcome}</h1>
+        <p style={{ color: "#666", fontSize: "16px" }}>{t.manageSystem}</p>
       </div>
 
-      <div className="mb-4">
-        <h5 className="fw-semibold mb-3">{t.general}</h5>
-        <div className="row g-4">
-          {settingsCards.slice(0, 4).map((card, index) => {
-            const Icon = card.icon;
-            return (
-              <div className="col-md-6 col-lg-3" key={index}>
-                <div
-                  className="card border-0 shadow-sm h-100 cursor-pointer hover-shadow transition-all"
-                  onClick={() => router.push(`/${lang}${card.path}`)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="card-body p-4">
-                    <div
-                      className="rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        backgroundColor: `${card.color}15`,
-                      }}
-                    >
-                      <Icon style={{ fontSize: 30, color: card.color }} />
-                    </div>
-                    <h5 className="fw-semibold mb-2">{card.title}</h5>
-                    <p className="text-muted small mb-0">{card.description}</p>
-                  </div>
-                </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {menuItems.map((item, idx) => (
+          <Link key={idx} href={item.href} style={{ textDecoration: "none" }}>
+            <div
+              style={{
+                padding: "20px",
+                borderRadius: "12px",
+                background: item.active ? "#005BAC" : "#f0f4f8",
+                color: item.active ? "white" : "#333",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                border: "1px solid #e0e0e0",
+                position: "relative",
+              }}
+              onMouseEnter={(e) => {
+                if (!item.active) {
+                  e.currentTarget.style.background = "#e8f0f8";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 12px rgba(0, 91, 172, 0.1)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!item.active) {
+                  e.currentTarget.style.background = "#f0f4f8";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }
+              }}
+            >
+              <div style={{ fontSize: "24px", marginBottom: "10px" }}>
+                {item.icon}
               </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="mb-4">
-        <h5 className="fw-semibold mb-3">{t.advanced}</h5>
-        <div className="row g-4">
-          {settingsCards.slice(4).map((card, index) => {
-            const Icon = card.icon;
-            return (
-              <div className="col-md-6 col-lg-3" key={index}>
+              <h3 style={{ margin: "0 0 5px 0", fontSize: "18px" }}>
+                {item.label}
+              </h3>
+              {item.badge && item.badge > 0 && (
                 <div
-                  className="card border-0 shadow-sm h-100 cursor-pointer hover-shadow transition-all"
-                  onClick={() => router.push(`/${lang}${card.path}`)}
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    background: "#ff4444",
+                    color: "white",
+                    borderRadius: "50%",
+                    width: "24px",
+                    height: "24px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                  }}
                 >
-                  <div className="card-body p-4">
-                    <div
-                      className="rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        backgroundColor: `${card.color}15`,
-                      }}
-                    >
-                      <Icon style={{ fontSize: 30, color: card.color }} />
-                    </div>
-                    <h5 className="fw-semibold mb-2">{card.title}</h5>
-                    <p className="text-muted small mb-0">{card.description}</p>
-                  </div>
+                  {item.badge}
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              )}
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
