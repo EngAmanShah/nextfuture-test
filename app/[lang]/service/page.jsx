@@ -4,8 +4,9 @@
 import React from "react";
 import ServiceHero from "@/components/ServiceHero";
 import ServicesSection from "@/components/ServicesSection/ServicesSection";
-import ERPPage from "@/components/ERP_three_tabs";
+import DevelopmentTabs from "@/components/development_tab";
 import Skills from "@/components/Skills/Skills";
+import ERPPage from "@/components/ERP_three_tabs";
 
 import { GiSkills } from "react-icons/gi";
 
@@ -17,8 +18,12 @@ export default function ServicePage({ params }) {
     <>
       <ServiceHero lang={lang} />
       <ServicesSection params={{ lang }} />
+
       <ERPPage lang={lang} />
-            <Skills lang={lang} />
+
+      <DevelopmentTabs lang={lang} />
+
+      <Skills lang={lang} />
 
     </>
   );

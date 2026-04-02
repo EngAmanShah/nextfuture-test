@@ -1,13 +1,30 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
-import Offer from "@/components/Offer";
-import Features from "@/components/Feature";
-import ERP from "@/components/ERP";
-import ZakatAuthoritySection from "@/components/ZakatAuthoritySection";
 
-const Testimonials = dynamic(() => import("@/components/Testimonials"));
-const LogosSlider = dynamic(() => import("@/components/LogosSlider"));
-const HomeFAQ = dynamic(() => import("@/components/HomeFAQ"));
+const Offer = dynamic(() => import("@/components/Offer"), {
+  loading: () => null,
+});
+const Features = dynamic(() => import("@/components/Feature"), {
+  loading: () => null,
+});
+const ERP = dynamic(() => import("@/components/ERP"), {
+  loading: () => null,
+});
+const ZakatAuthoritySection = dynamic(
+  () => import("@/components/ZakatAuthoritySection"),
+  {
+    loading: () => null,
+  }
+);
+const Testimonials = dynamic(() => import("@/components/Testimonials"), {
+  loading: () => null,
+});
+const LogosSlider = dynamic(() => import("@/components/LogosSlider"), {
+  loading: () => null,
+});
+const HomeFAQ = dynamic(() => import("@/components/HomeFAQ"), {
+  loading: () => null,
+});
 
 export default async function Home({ params }) {
   const { lang } = await params;
@@ -26,13 +43,13 @@ export default async function Home({ params }) {
         "We understand your needs and deliver innovative, tailored solutions.",
     },
     ar: {
-      headingTitle: "انطلق نحو المستقبل مع نكست فيوتشر",
+      headingTitle: "انطلق نحو المستقبل مع نيكست  فيوتشر",
       heroHeadline: "نضعك في قلب التحول الرقمي مع حلول تقنية مبتكرة وشاملة",
       heroBig:
         "نقدم لك حلولا مصممة لدعم طموحاتك ولتلبية احتياجات عملك، مما يساعدك على التكيف مع التغيرات السريعة في عالم التقنية.",
       heroFooter: "نساعدك على التأقلم مع التغيرات السريعة في عالم التقنية.",
       shopNow: "اكتشف خدماتنا",
-      whyChooseTitle: "لماذا تختار نكست فيوتشر",
+      whyChooseTitle: "لماذا تختار نيكست  فيوتشر",
       whyChooseDescription: "نتفهم احتياجاتك ونقدم حلولاً مبتكرة",
     },
   };

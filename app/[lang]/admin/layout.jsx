@@ -68,7 +68,7 @@ function AdminAccountContent({ params, children }) {
     },
     ar: {
       contacts: "رسائل التواصل",
-      erpDetails: "تفاصيل نكست ERP",
+      erpDetails: "تفاصيل نيكست  ERP",
       admins: "المشرفون",
       profile: "ملفي الشخصي",
       password: "تغيير كلمة المرور",

@@ -31,7 +31,7 @@ export default function SystemManagement({ params }) {
     ar: {
       systemTitle: "إدارة النظام",
       dashboard: "لوحة التحكم",
-      erpDetails: "تفاصيل نكست ERP",
+      erpDetails: "تفاصيل نيكست  ERP",
       contacts: "رسائل التواصل",
       admins: "المشرفون",
       settings: "إعدادات التواصل",

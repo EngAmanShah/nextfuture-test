@@ -32,7 +32,7 @@ export default function WhyChooseUs({ lang, title, subtitle }) {
       ],
     },
     ar: {
-      mainTitle: "لماذا تختار نكست فيوتشر",
+      mainTitle: "لماذا تختار نيكست  فيوتشر",
       subtitle: "نفهم احتياجاتك ونقدم حلولاً مبتكرة",
       features: [
         {
@@ -61,7 +61,7 @@ export default function WhyChooseUs({ lang, title, subtitle }) {
   const mainTitle = title || t.mainTitle;
   const mainSubtitle = subtitle || t.subtitle;
 
-  const bluePhrase = lang === "ar" ? "نكست فيوتشر" : "Next Future Information";
+  const bluePhrase = lang === "ar" ? "نيكست  فيوتشر" : "Next Future Information";
   const hasBluePhrase = mainTitle.includes(bluePhrase);
   const titleBefore = hasBluePhrase ? mainTitle.replace(bluePhrase, "") : mainTitle;
 

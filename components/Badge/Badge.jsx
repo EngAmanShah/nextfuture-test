@@ -18,12 +18,12 @@ export default function Badge({ lang = "en" }) {
 
   const heroTitle = {
     en: "NextFuture Technology - The Safe and Reliable Solution for E-Invoicing",
-    ar: "نكست فيوتشر للتقنية الحل الآمن والموثوق للفوترة الإلكترونية"
+    ar: "نيكست  فيوتشر للتقنية الحل الآمن والموثوق للفوترة الإلكترونية"
   };
 
   const heroDescription = {
     en: "Discover why NextFuture products and services are the best for streamlining your operations and reducing human errors.",
-    ar: "اكتشف لماذا تعد منتجات وخدمات نكست فيوتشر الأفضل لتبسيط عملياتك وتقليل الأخطاء البشرية."
+    ar: "اكتشف لماذا تعد منتجات وخدمات نيكست  فيوتشر الأفضل لتبسيط عملياتك وتقليل الأخطاء البشرية."
   };
 
   const buttonText = {
@@ -38,7 +38,7 @@ export default function Badge({ lang = "en" }) {
     },
     subtitle: { 
       en: "Work smart by linking NextFuture solutions with software and tools.", 
-      ar: "اعمل بذكاء من خلال ربط حلول نكست فيوتشر مع البرامج والأدوات." 
+      ar: "اعمل بذكاء من خلال ربط حلول نيكست  فيوتشر مع البرامج والأدوات." 
     },
     description: { 
       en: "Enjoy a seamless work experience by linking the solutions to the rest of the programs, to save your time and get better results.", 
@@ -194,9 +194,9 @@ export default function Badge({ lang = "en" }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="services-tag">{lang === "ar" ? "خدمات نكست فيوتشر" : "NextFuture Services"}</span>
+            <span className="services-tag">{lang === "ar" ? "خدمات نيكست  فيوتشر" : "NextFuture Services"}</span>
             <h3>{lang === "ar" ? "وفر وقتك وجهدك مع خدماتنا المحاسبية المهنية" : "Save your time and effort with our professional accounting services"}</h3>
-            <p>{lang === "ar" ? "خدمات محاسبية متكاملة لضمان أفضل استفادة من برنامج نكست فيوتشر المحاسبي، مثل التأسيس، مسك الدفاتر، رفع إقرارات هيئة الزكاة والضريبة والجمارك، وغيرها." : "Integrated accounting services to ensure the best use of the NextFuture accounting program, such as establishment, bookkeeping, filing returns for the Zakat, Tax and Customs Authority, and more."}</p>
+            <p>{lang === "ar" ? "خدمات محاسبية متكاملة لضمان أفضل استفادة من برنامج نيكست  فيوتشر المحاسبي، مثل التأسيس، مسك الدفاتر، رفع إقرارات هيئة الزكاة والضريبة والجمارك، وغيرها." : "Integrated accounting services to ensure the best use of the NextFuture accounting program, such as establishment, bookkeeping, filing returns for the Zakat, Tax and Customs Authority, and more."}</p>
           </motion.div>
         </div>
       </div>

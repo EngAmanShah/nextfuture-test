@@ -238,7 +238,7 @@ const testimonialsContent = {
       <div className="d-flex flex-column align-items-center text-center mb-4">
         <h2 className="testimonials-title">
           {lang === "ar"
-            ? "اراء عملاء نكست فيوتشر"
+            ? "اراء عملاء نيكست  فيوتشر"
             : "Next Future Customer Reviews"}
         </h2>
         <p className="testimonials-subtitle text-center w-md-75">

@@ -72,7 +72,7 @@ export default function ValueSlider({ lang = "en" }) {
     },
     description: {
       en: "At Next Future tech, we deliver tailored digital solutions, including app development, website design, and brand identity creation, to elevate your digital presence and drive business growth.",
-      ar: "في منظمة نكست فيوتشر، نقدم حلولاً رقمية مخصصة، بما في ذلك تطوير التطبيقات وتصميم المواقع الإلكترونية وإنشاء الهوية البصرية، لرفع مستوى حضورك الرقمي وتعزيز نمو عملك.",
+      ar: "في منظمة نيكست  فيوتشر، نقدم حلولاً رقمية مخصصة، بما في ذلك تطوير التطبيقات وتصميم المواقع الإلكترونية وإنشاء الهوية البصرية، لرفع مستوى حضورك الرقمي وتعزيز نمو عملك.",
     },
   };
 

@@ -14,7 +14,7 @@ export default function ServiceHero({ lang = "ar" }) {
 
   const content = {
     ar: {
-      heading1: "تحول رقمي شامل مع نكست فيوتشر",
+      heading1: "تحول رقمي شامل مع نيكست  فيوتشر",
       headline1:
         "حلول مبتكرة للتطوير، التصميم، والتسويق، وأنظمة إدارة العقارات والمقاولات",
       primaryBtn1: "اكشف الخدمات",
