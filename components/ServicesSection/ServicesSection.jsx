@@ -223,6 +223,7 @@ export default function Page({ params }) {
                     {service.icon}
                   </div>
                   <span className="svc-title">{service.title}</span>
+                  <p className="svc-desc">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -236,6 +237,7 @@ export default function Page({ params }) {
                     {service.icon}
                   </div>
                   <span className="svc-title">{service.title}</span>
+                  <p className="svc-desc">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -346,6 +348,17 @@ export default function Page({ params }) {
           text-align: center;
           line-height: 1.3;
           color: #0d1f4c;
+        }
+
+        .svc-desc {
+          position: relative;
+          z-index: 1;
+          font-size: 0.65rem;
+          text-align: center;
+          color: #42526e;
+          margin: 0;
+          max-width: 180px;
+          line-height: 1.3;
         }
 
         @media (min-width: 480px) {

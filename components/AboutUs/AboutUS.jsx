@@ -43,7 +43,7 @@ export default function AboutUs({ params }) {
       valuesTitle: "Our Values & Principles",
     },
     ar: {
-      heroTitle: "انطلق نحو المستقبل مع نكست فيوتشر",
+      heroTitle: "انطلق نحو المستقبل مع نيكست  فيوتشر",
       heroSubtitle:
         "نضعك في قلب التحول الرقمي مع حلول تقنية مبتكرة وشاملة",
       ctaBtn: "تواصل معنا",
@@ -131,7 +131,7 @@ export default function AboutUs({ params }) {
             {/* Image side */}
             <div className={styles.storyImageWrap}>
               <Image
-                src="/about.png"
+                src="/about2.png"
                 alt="Next Future"
                 width={520}
                 height={420}

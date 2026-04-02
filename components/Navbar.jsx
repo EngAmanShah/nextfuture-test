@@ -65,14 +65,14 @@ export default function Navbar({ lang }) {
 
   const menuItems = [
     { href: "/", label: lang === "ar" ? "الرئيسية" : "Home" },
+        { href: "/ERP/Next-Future-ERP", label: lang === "ar" ? "نيكست فيوتشر ERP" : "Next Future ERP" },
+
     {
       href: "/service",
       label: lang === "ar" ? "خدماتنا" : "Services",
     },
-    {
-      href: "/ERP/Next-Future-ERP",
-      label: "Next Future ERP",
-    },
+    
+    
     { href: "/about-us", label: lang === "ar" ? "من نحن" : "About Us" },
     { href: "/contact-us", label: lang === "ar" ? "اتصل بنا" : "Contact Us" },
   ];
@@ -123,39 +123,13 @@ export default function Navbar({ lang }) {
     {
       href: "/ERP/Next-Future-ERP",
       en: "Next Future ERP",
-      ar: "نكست فيوتشر ERP",
+      ar: "نيكست  فيوتشر ERP",
       description: {
         en: "Modern, cloud‑based ERP for growing businesses",
         ar: "نظام ERP سحابي حديث للشركات النامية",
       },
     },
-    {
-      href: "/ERP/odoo",
-      en: "Odoo ERP",
-      ar: "أودو ERP",
-      description: {
-        en: "Open-source business management software",
-        ar: "برنامج إدارة الأعمال مفتوح المصدر",
-      },
-    },
-    {
-      href: "/ERP/Construction-Management",
-      en: "Construction Company ERP",
-      ar: "نظام إدارة شركات المقاولات",
-      description: {
-        en: "Specialized ERP for construction companies",
-        ar: "نظام متخصص لإدارة شركات المقاولات",
-      },
-    },
-    {
-      href: "/ERP/property-management",
-      en: "Property Management ERP",
-      ar: "نظام إدارة العقارات",
-      description: {
-        en: "Comprehensive property management solutions",
-        ar: "حلول شاملة لإدارة العقارات",
-      },
-    },
+ 
     {
       href: "/ERP/custom",
       en: "Custom ERP Solutions",

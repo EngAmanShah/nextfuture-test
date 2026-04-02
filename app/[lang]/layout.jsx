@@ -2,6 +2,8 @@ export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "ar" }];
 }
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }) {
   const { lang } = await params;
 
@@ -15,9 +17,9 @@ export async function generateMetadata({ params }) {
         "IT solutions Saudi Arabia, web development, mobile app development, digital marketing, ERP systems, Odoo implementation, property management software, construction management, custom software development",
     },
     ar: {
-      title: "نكست فيوتشر - تطوير المواقع والتطبيقات، التسويق الرقمي، أنظمة ERP",
+      title: "نيكست  فيوتشر - تطوير المواقع والتطبيقات، التسويق الرقمي، أنظمة ERP",
       description:
-        "شركة تقنية معلومات رائدة في السعودية متخصصة في تطوير المواقع، تطبيقات الجوال، التسويق الرقمي، أنظمة ERP (Odoo، إدارة العقارات)، وحلول برمجية مخصصة. حوّل أعمالك مع نكست فيوتشر.",
+        "شركة تقنية معلومات رائدة في السعودية متخصصة في تطوير المواقع، تطبيقات الجوال، التسويق الرقمي، أنظمة ERP (Odoo، إدارة العقارات)، وحلول برمجية مخصصة. حوّل أعمالك مع نيكست  فيوتشر.",
       keywords:
         "حلول تقنية المعلومات السعودية, تطوير المواقع, تطوير التطبيقات, التسويق الرقمي, أنظمة ERP, تطبيق Odoo, برنامج إدارة العقارات, إدارة المشاريع الإنشائية, تطوير برمجيات مخصصة",
     },

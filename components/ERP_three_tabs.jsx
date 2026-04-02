@@ -26,8 +26,8 @@ const tabsDataByLang = {
       subtitle: "",
       description: "اكتشف كيف يقدّم Odoo نظام ERP مفتوح المصدر شامل لإدارة المبيعات، المحاسبة، المخزون، التسويق، والموارد البشرية. تعرف على مميزاته وفوائده وكيفية استخدامه لتطوير أعمالك بكل سهولة وتوافق مع رؤية المملكة 2030.",
       buttons: [
-        { text: "احجز موعد الان", type: "primary", link: "/contact" },
-        { text: "تحميل الملف التعريفي", type: "outline", link: "/brochure" },
+        { text: "احجز موعد الان", type: "primary", link: "/contact-us" },
+        { text: "تحميل الملف التعريفي", type: "outline", link: "https://drive.google.com/file/d/1UqFuyAYpHfnas8AX7dFtmzYr2QzavVw2/view?usp=sharing" },
       ],
       sections: [
         {
@@ -65,8 +65,8 @@ const tabsDataByLang = {
       description: "يوفر نظام Odoo أدوات متكاملة لإدارة المشاريع، المالية، والمخزون. مما يعزز الكفاءة ويساعد في تحقيق النجاح في قطاع المقاولات.",
       image: "/real_estate.jpg",
       buttons: [
-        { text: "احصل على استشارة مجانية", type: "primary", link: "/contact" },
-        { text: "تحميل الملف التعريفي", type: "outline", link: "/brochure" },
+        { text: "احصل على استشارة مجانية", type: "primary", link: "/contact-us" },
+        { text: "تحميل الملف التعريفي", type: "outline", link: "https://drive.google.com/file/d/1UqFuyAYpHfnas8AX7dFtmzYr2QzavVw2/view?usp=sharing" },
       ],
       features: [
         { text: "نظام تتبع العمال والمعدات - توفر المعلومات المهمة ومعرفة مواقع المعدات بشكل فعال", icon: LuUsers },
@@ -86,8 +86,8 @@ const tabsDataByLang = {
       description: "هو وحدة برمجية متكاملة مصممة خصيصًا لأصحاب العقارات، شركات الوساطة العقارية، والمطورين العقاريين. تمكنك من إدارة كافة جوانب الأملاك في مكان واحد مع أتمتة العمليات الرئيسية ومنحك رؤية شاملة حول وضع عقاراتك وأرباحك بشكل لحظي.",
       image: "/third_tab.jpg",
       buttons: [
-        { text: "احجز موعد الان", type: "primary", link: "/contact" },
-        { text: "تحميل الملف التقريري", type: "outline", link: "/brochure" },
+        { text: "احجز موعد الان", type: "primary", link: "/contact-us" },
+        { text: "تحميل الملف التقريري", type: "outline", link: "https://drive.google.com/file/d/1UqFuyAYpHfnas8AX7dFtmzYr2QzavVw2/view?usp=sharing" },
       ],
       sections: [
         {
@@ -116,10 +116,10 @@ const tabsDataByLang = {
       title: "The Integrated Solution for Managing Your Business Effectively",
       subtitle: "",
       description: "Discover how Odoo provides a comprehensive open-source ERP system for managing sales, accounting, inventory, marketing, and human resources. Learn about its features, benefits, and how to use it to grow your business with ease and in alignment with Saudi Vision 2030.",
-      // buttons: [
-      //   { text: "Book an Appointment", type: "primary", link: "/contact" },
-      //   { text: "Download Brochure", type: "outline", link: "/brochure" },
-      // ],
+      buttons: [
+        { text: "Book an Appointment", type: "primary", link: "/contact" },
+        { text: "Download Brochure", type: "outline", link: "/brochure" },
+      ],
       sections: [
         {
           title: "What is Odoo?",
@@ -177,10 +177,10 @@ const tabsDataByLang = {
       subtitle: "The Integrated Property & Real Estate Management System",
       description: "A comprehensive software module designed specifically for property owners, real estate brokerage firms, and developers. Manage all aspects of your properties in one place with automated key processes and real-time insight into your portfolio performance.",
       image: "/third_tab.jpg",
-      // buttons: [
-      //   { text: "Book an Appointment", type: "primary", link: "/contact" },
-      //   { text: "Download Brochure", type: "outline", link: "/brochure" },
-      // ],
+      buttons: [
+        { text: "Book an Appointment", type: "primary", link: "/contact" },
+        { text: "Download Brochure", type: "outline", link: "/brochure" },
+      ],
       sections: [
         {
           title: "What is a Property Management System?",
@@ -587,6 +587,8 @@ export default function ERPPage({ lang = "ar" }) {
           padding: 12px 32px;
           font-size: 15px;
           font-weight: 600;
+                    background-color: #9c0b0b00;
+
           border-radius: 50px;
           text-decoration: none;
           transition: all 0.3s ease;
@@ -594,7 +596,7 @@ export default function ERPPage({ lang = "ar" }) {
         }
 
         .btn-primary {
-          background: linear-gradient(135deg, #005BAC 0%, #02417A 100%);
+          background-color: black;
           color: white;
           border: none;
           box-shadow: 0 4px 15px rgba(0, 91, 172, 0.3);
@@ -602,6 +604,8 @@ export default function ERPPage({ lang = "ar" }) {
 
         .btn-primary:hover {
           transform: translateY(-2px);
+                    background-color: black;
+
           box-shadow: 0 8px 25px rgba(0, 91, 172, 0.4);
         }
 

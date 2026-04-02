@@ -73,7 +73,7 @@ export default function ERPDetailsPage({ params }) {
       noLeads: "No Download Leads",
     },
     ar: {
-      title: "عملاء تحميل نكست ERP المحتملين",
+      title: "عملاء تحميل نيكست  ERP المحتملين",
       searchPlaceholder: "ابحث بالاسم أو البريد الإلكتروني",
       table: {
         email: "البريد الإلكتروني",

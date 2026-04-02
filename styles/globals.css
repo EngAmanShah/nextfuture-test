@@ -30,13 +30,25 @@
 /* display=swap prevents FOIT (Flash of Invisible Text) and improves LCP */
 
 /* ==============================
-   Global Reset
+   Global Reset + First-paint baseline
 ============================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+html, body, #__next {
+  min-height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #0a6cc2 0%, #0b3c74 100%);
+  color: #fff;
+}
+
+#__next {
+  background: inherit;
+}
+
 
 html,
 body {

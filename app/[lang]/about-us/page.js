@@ -11,9 +11,9 @@ const content = {
       "Discover how Next Future Information Technology empowers businesses with innovative digital solutions. Learn about our mission, story, and comprehensive services in web development, mobile apps, IT consulting, digital marketing, and design.",
   },
   ar: {
-    title: "عن نكست فيوتشر | الابتكار، التكنولوجيا والنمو",
+    title: "عن نيكست  فيوتشر | الابتكار، التكنولوجيا والنمو",
     description:
-      "اكتشف كيف تساهم شركة نكست فيوتشر لتقنية المعلومات في تمكين الشركات من خلال حلول رقمية مبتكرة. تعرف على مهمتنا وقصتنا وخدماتنا الشاملة في تطوير المواقع والتطبيقات، استشارات تكنولوجيا المعلومات، التسويق الرقمي، والتصميم.",
+      "اكتشف كيف تساهم شركة نيكست  فيوتشر لتقنية المعلومات في تمكين الشركات من خلال حلول رقمية مبتكرة. تعرف على مهمتنا وقصتنا وخدماتنا الشاملة في تطوير المواقع والتطبيقات، استشارات تكنولوجيا المعلومات، التسويق الرقمي، والتصميم.",
   },
 };
 

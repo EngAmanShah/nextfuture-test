@@ -177,10 +177,10 @@ export default function WhyChooseUs({ lang = "ar" }) {
           >
             <div className="image-wrapper">
               <Image
-                src="/side-img.jpg"
-                alt={lang === "ar" ? "نكست فيوتشير" : "Next Future"}
-                width={500}
-                height={400}
+                src="/about2.jpg"
+                alt={lang === "ar" ? "نيكست  فيوتشير" : "Next Future"}
+                width={600}
+                height={500}
                 className="feature-image"
                 priority
               />

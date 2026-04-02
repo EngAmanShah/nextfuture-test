@@ -83,7 +83,7 @@ export default function ErpPackages({ lang }) {
       warehouse: "Warehouse"
     },
     ar: {
-      title: " نكست فيوتشر ERP",
+      title: " نيكست  فيوتشر ERP",
       subtitle: "أنظمة ERP متكاملة للأعمال الحديثة تشمل الإدارة المالية، المبيعات، المخزون، إدارة علاقات العملاء (CRM)، ورؤى مدعومة بالذكاء الاصطناعي في نظام واحد.",
       packages: [
         {
